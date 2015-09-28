@@ -1,0 +1,7 @@
+#Composer
+vendor
+
+#Bin
+bin/phpunit
+
+build
