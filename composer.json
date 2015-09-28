@@ -1,0 +1,27 @@
+{
+    "name": "lafourchette/omnipay-adyen",
+    "type": "library",
+    "description": "Adyen api driver for the Omnipay payment processing library",
+    "keywords": [
+        "adyen",
+        "gateway",
+        "merchant",
+        "omnipay",
+        "pay",
+        "payment"
+    ],
+    "homepage": "https://github.com/lafourchette/omnipay-adyen",
+    "license": "MIT",
+    "autoload": {
+        "psr-0": { "Omnipay\\AdyenApi\\" : "src/" }
+    },
+    "require": {
+        "omnipay/common": "~2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": ">=4.5"
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
+}
