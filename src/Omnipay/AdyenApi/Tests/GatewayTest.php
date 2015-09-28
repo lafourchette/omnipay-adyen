@@ -1,12 +1,12 @@
 <?php
 namespace Omnipay\AdyenApi\Tests;
 
-use Omnipay\AdyenApi\Gateway;
 use Guzzle\Http\ClientInterface as HttpClient;
-use Prophecy\Prophecy\ObjectProphecy;
-use Symfony\Component\HttpFoundation\Request as HttpRequest;
+use Omnipay\AdyenApi\Gateway;
 use Omnipay\AdyenApi\Message\Payment\Authorise\Request as AuthorizeRequest;
 use Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Request as ListRecurringDetailsRequest;
+use Prophecy\Prophecy\ObjectProphecy;
+use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 /**
  * Class GatewayTest

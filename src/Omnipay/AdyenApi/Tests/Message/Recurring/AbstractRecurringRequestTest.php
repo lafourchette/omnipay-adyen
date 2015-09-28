@@ -1,8 +1,11 @@
 <?php
 namespace Omnipay\AdyenApi\Tests\Message\Recurring;
 
+use Guzzle\Http\ClientInterface as HttpClient;
 use Omnipay\AdyenApi\Message\Recurring\AbstractRecurringRequest;
+use Omnipay\AdyenApi\Tests\Mock\AbstractRecurringRequestTestMock;
 use Prophecy\Prophecy\ObjectProphecy;
+use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 /**
  * Class AbstractRecurringRequestTest
@@ -11,6 +14,12 @@ class AbstractRecurringRequestTest extends \PHPUnit_Framework_TestCase
 {
     /** @var AbstractRecurringRequest|ObjectProphecy */
     private $abstractPaymentRequest;
+
+    /** @var HttpClient|ObjectProphecy */
+    private $httpClient;
+
+    /** @var HttpRequest|ObjectProphecy */
+    private $httpRequest;
 
     /**
      * @{inheritdoc}
@@ -21,7 +30,7 @@ class AbstractRecurringRequestTest extends \PHPUnit_Framework_TestCase
 
         $this->httpClient = $this->prophesize('Guzzle\Http\ClientInterface');
         $this->httpRequest = $this->prophesize('Symfony\Component\HttpFoundation\Request');
-        $this->abstractPaymentRequest = new AbstractRecurringRequestTest_Mock(
+        $this->abstractPaymentRequest = new AbstractRecurringRequestTestMock(
             $this->httpClient->reveal(),
             $this->httpRequest->reveal()
         );
@@ -43,35 +52,5 @@ class AbstractRecurringRequestTest extends \PHPUnit_Framework_TestCase
             'https://pal-test.adyen.com/pal/servlet/Recurring/v12/',
             $this->abstractPaymentRequest->getBaseEndpoint()
         );
-    }
-}
-
-
-/**
- * Class AbstractRecurringRequestTest_Mock
- */
-class AbstractRecurringRequestTest_Mock extends AbstractRecurringRequest
-{
-    /**
-     * {@inheritdoc}
-     */
-    public function getMethodName()
-    {
-        return 'MOCK_METHOD';
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getData()
-    {
-        return array();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function sendData($data)
-    {
     }
 }

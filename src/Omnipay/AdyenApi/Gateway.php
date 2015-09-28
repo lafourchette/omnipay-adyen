@@ -1,8 +1,6 @@
 <?php
-
 namespace Omnipay\AdyenApi;
 
-use Omnipay\Adyen\Message\AuthorizeRequest;
 use Omnipay\Common\AbstractGateway;
 
 /**

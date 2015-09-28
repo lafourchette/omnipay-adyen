@@ -1,10 +1,14 @@
 <?php
 namespace Omnipay\AdyenApi\Tests\Message\Recurring\ListRecurringDetails;
 
+use Guzzle\Http\ClientInterface as HttpClient;
+use Guzzle\Http\Message\EntityEnclosingRequestInterface;
+use Guzzle\Http\Message\Response as GuzzleResponse;
 use Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Request;
 use Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response;
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
+use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 /**
  * Class RequestTest
@@ -13,6 +17,12 @@ class RequestTest extends \PHPUnit_Framework_TestCase
 {
     /** @var Request|ObjectProphecy */
     private $request;
+
+    /** @var HttpClient|ObjectProphecy */
+    private $httpClient;
+
+    /** @var HttpRequest|ObjectProphecy */
+    private $httpRequest;
 
     /**
      * @{inheritdoc}
@@ -59,9 +69,9 @@ class RequestTest extends \PHPUnit_Framework_TestCase
      */
     public function testSendData()
     {
-        /** @var EntityEnclosingRequestInterface|ObjectProphecy $request */
+        /** @var EntityEnclosingRequestInterface|ObjectProphecy $httpRequest */
         $httpRequest = $this->prophesize('Guzzle\Http\Message\EntityEnclosingRequestInterface');
-        /** @var Response|ObjectProphecy $response */
+        /** @var GuzzleResponse|ObjectProphecy $response */
         $response = $this->prophesize('Guzzle\Http\Message\Response');
 
         $this->httpClient->post(Argument::type('string'))
@@ -153,7 +163,6 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             $this->request->$getter()
         );
     }
-
 
     /**
      */

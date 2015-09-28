@@ -1,18 +1,27 @@
 <?php
 namespace Omnipay\AdyenApi\Tests\Message;
 
+use Guzzle\Http\ClientInterface as HttpClient;
 use Guzzle\Http\Message\EntityEnclosingRequestInterface;
 use Guzzle\Http\Message\Response;
 use Omnipay\AdyenApi\Message\AbstractApiRequest;
+use Omnipay\AdyenApi\Tests\Mock\AbstractApiRequestTestMock;
 use Prophecy\Prophecy\ObjectProphecy;
+use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 /**
  * Class AbstractApiRequestTest
  */
 class AbstractApiRequestTest extends \PHPUnit_Framework_TestCase
 {
-    /** @var AbstractApiRequest|ObjectProphecy */
+    /** @var AbstractApiRequest */
     private $abstractApiRequest;
+
+    /** @var HttpClient|ObjectProphecy */
+    private $httpClient;
+
+    /** @var HttpRequest|ObjectProphecy */
+    private $httpRequest;
 
     /**
      * @{inheritdoc}
@@ -23,7 +32,7 @@ class AbstractApiRequestTest extends \PHPUnit_Framework_TestCase
 
         $this->httpClient = $this->prophesize('Guzzle\Http\ClientInterface');
         $this->httpRequest = $this->prophesize('Symfony\Component\HttpFoundation\Request');
-        $this->abstractApiRequest = new AbstractApiRequestTest_Mock(
+        $this->abstractApiRequest = new AbstractApiRequestTestMock(
             $this->httpClient->reveal(),
             $this->httpRequest->reveal()
         );
@@ -155,8 +164,6 @@ class AbstractApiRequestTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-
-
     /**
      * @return array
      */
@@ -166,37 +173,5 @@ class AbstractApiRequestTest extends \PHPUnit_Framework_TestCase
             'API_USER' => array('apiUser', 'MyApiUser'),
             'API_PASSWORD' => array('apiPassword', 'MyApiPassword'),
         );
-    }
-}
-
-
-/**
- * Class AbstractApiRequestTest_Mock
- */
-class AbstractApiRequestTest_Mock extends AbstractApiRequest
-{
-    protected $liveEndpoint = 'LIVE';
-    protected $testEndpoint = 'TEST';
-    /**
-     * {@inheritdoc}
-     */
-    public function getMethodName()
-    {
-        return 'MOCK_METHOD';
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getData()
-    {
-        return array();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function sendData($data)
-    {
     }
 }

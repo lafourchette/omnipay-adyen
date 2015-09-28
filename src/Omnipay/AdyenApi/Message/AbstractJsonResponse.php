@@ -5,11 +5,7 @@ use Omnipay\Common\Message\AbstractResponse;
 use Omnipay\Common\Message\RequestInterface;
 
 /**
- * Base Adyen Request
- *
- * Mandatory values :
- *  - apiUser
- *  - apiPassword
+ * Base Adyen Json Response
  */
 abstract class AbstractJsonResponse extends AbstractResponse
 {

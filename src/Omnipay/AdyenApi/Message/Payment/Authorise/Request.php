@@ -195,7 +195,7 @@ class Request extends AbstractPaymentRequest
     public function getData()
     {
         // Don't validate amountValue with this function it can be equal to 0 for card checking
-        $this->validate('amountCurrency', 'reference', 'merchantAccount', 'encryptedForm');
+        $this->validate('amountCurrency', 'reference', 'merchantAccount');
 
         if ($this->getAmountValue() !== 0 && $this->getAmountValue() !== null) {
             $this->validate('amountValue');

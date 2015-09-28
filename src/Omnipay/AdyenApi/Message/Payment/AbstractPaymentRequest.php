@@ -24,7 +24,7 @@ abstract class AbstractPaymentRequest extends AbstractApiRequest
     /**
      * @param string $value
      *
-     * @return Request
+     * @return $this
      */
     public function setMerchantAccount($value)
     {

@@ -4,11 +4,7 @@ namespace Omnipay\AdyenApi\Message\Recurring;
 use Omnipay\AdyenApi\Message\AbstractApiRequest;
 
 /**
- * Base Adyen Request
- *
- * Mandatory values :
- *  - apiUser
- *  - apiPassword
+ * Base Adyen Recurring Request
  */
 abstract class AbstractRecurringRequest extends AbstractApiRequest
 {

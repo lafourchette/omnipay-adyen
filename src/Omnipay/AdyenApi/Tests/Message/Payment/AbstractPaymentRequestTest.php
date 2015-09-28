@@ -1,10 +1,11 @@
 <?php
 namespace Omnipay\AdyenApi\Tests\Message\Payment;
 
-use Omnipay\AdyenApi\Message\AbstractApiRequest;
+use Guzzle\Http\ClientInterface as HttpClient;
 use Omnipay\AdyenApi\Message\Payment\AbstractPaymentRequest;
-use Omnipay\Common\Message\ResponseInterface;
+use Omnipay\AdyenApi\Tests\Mock\AbstractPaymentRequestTestMock;
 use Prophecy\Prophecy\ObjectProphecy;
+use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 /**
  * Class AbstractPaymentRequestTest
@@ -13,6 +14,12 @@ class AbstractPaymentRequestTest extends \PHPUnit_Framework_TestCase
 {
     /** @var AbstractPaymentRequest|ObjectProphecy */
     private $abstractPaymentRequest;
+
+    /** @var HttpClient|ObjectProphecy */
+    private $httpClient;
+
+    /** @var HttpRequest|ObjectProphecy */
+    private $httpRequest;
 
     /**
      * @{inheritdoc}
@@ -23,7 +30,7 @@ class AbstractPaymentRequestTest extends \PHPUnit_Framework_TestCase
 
         $this->httpClient = $this->prophesize('Guzzle\Http\ClientInterface');
         $this->httpRequest = $this->prophesize('Symfony\Component\HttpFoundation\Request');
-        $this->abstractPaymentRequest = new AbstractPaymentRequestTest_Mock(
+        $this->abstractPaymentRequest = new AbstractPaymentRequestTestMock(
             $this->httpClient->reveal(),
             $this->httpRequest->reveal()
         );
@@ -97,8 +104,6 @@ class AbstractPaymentRequestTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-
-
     /**
      * @return array
      */
@@ -107,35 +112,5 @@ class AbstractPaymentRequestTest extends \PHPUnit_Framework_TestCase
         return array(
             'MERCHANT_ACCOUNT' => array('merchantAccount', 'MyMerchantAccount'),
         );
-    }
-}
-
-
-/**
- * Class AbstractPaymentRequestTest_Mock
- */
-class AbstractPaymentRequestTest_Mock extends AbstractPaymentRequest
-{
-    /**
-     * {@inheritdoc}
-     */
-    public function getMethodName()
-    {
-        return 'MOCK_METHOD';
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getData()
-    {
-        return array();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function sendData($data)
-    {
     }
 }
