@@ -41,7 +41,6 @@ class RequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Request::appendAdditionalData
      */
     public function testGetData()
     {

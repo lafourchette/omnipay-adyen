@@ -25,24 +25,24 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Response::getCreationDate
-     * @covers Response::getShopperReference
-     * @covers Response::getRecurringDetail
-     * @covers Response::getAdditionalData
-     * @covers Response::getCardBin
-     * @covers Response::getAlias
-     * @covers Response::getAliasType
-     * @covers Response::getCard
-     * @covers Response::getExpiryMonth
-     * @covers Response::getExpiryYear
-     * @covers Response::getHolderName
-     * @covers Response::getNumber
-     * @covers Response::getContractTypes
-     * @covers Response::getFirstPspReference
-     * @covers Response::getName
-     * @covers Response::getPaymentMethodVariant
-     * @covers Response::getRecurringDetailReference
-     * @covers Response::getVariant
+     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::getCreationDate
+     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::getShopperReference
+     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::getRecurringDetail
+     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::getAdditionalData
+     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::getCardBin
+     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::getAlias
+     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::getAliasType
+     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::getCard
+     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::getExpiryMonth
+     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::getExpiryYear
+     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::getHolderName
+     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::getNumber
+     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::getContractTypes
+     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::getFirstPspReference
+     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::getName
+     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::getPaymentMethodVariant
+     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::getRecurringDetailReference
+     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::getVariant
      */
     public function testGetter()
     {
@@ -180,7 +180,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider getTestGetDetails
-     * @covers Response::isSuccessful
+     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::isSuccessful
      *
      * @param array $data
      * @param mixed $expectedGetDetails

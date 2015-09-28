@@ -25,14 +25,14 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Response::getPspReference
-     * @covers Response::getResultCode
-     * @covers Response::getAuthCode
-     * @covers Response::getStatus
-     * @covers Response::getErrorCode
-     * @covers Response::getMessage
-     * @covers Response::getErrorType
-     * @covers Response::getRefusalReason
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Response::getPspReference
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Response::getResultCode
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Response::getAuthCode
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Response::getStatus
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Response::getErrorCode
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Response::getMessage
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Response::getErrorType
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Response::getRefusalReason
      */
     public function testGetter()
     {

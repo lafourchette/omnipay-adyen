@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request as HttpRequest;
  */
 class RequestTest extends \PHPUnit_Framework_TestCase
 {
-    /** @var Request|ObjectProphecy */
+    /** @var Request */
     private $request;
 
     /** @var HttpClient|ObjectProphecy */
@@ -41,7 +41,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Request::appendAdditionalData
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::appendAdditionalData
      */
     public function testGetDataWithBasicData()
     {
@@ -72,8 +72,8 @@ class RequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Request::appendAdditionalData
-     * @covers Request::appendAdditionalAmountData
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::appendAdditionalData
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::appendAdditionalAmountData
      */
     public function testGetDataWithAdditionalAmount()
     {
@@ -110,8 +110,8 @@ class RequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Request::appendAdditionalData
-     * @covers Request::appendRecurringData
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::appendAdditionalData
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::appendRecurringData
      */
     public function testGetDataWithRecurringData()
     {
@@ -148,8 +148,8 @@ class RequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Request::appendAdditionalData
-     * @covers Request::appendShopperData
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::appendAdditionalData
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::appendShopperData
      */
     public function testGetDataWithShopperData()
     {
@@ -182,10 +182,10 @@ class RequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Request::appendAdditionalData
-     * @covers Request::appendAdditionalAmountData
-     * @covers Request::appendRecurringData
-     * @covers Request::appendShopperData
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::appendAdditionalData
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::appendAdditionalAmountData
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::appendRecurringData
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::appendShopperData
      */
     public function testGetDataWithAllData()
     {
