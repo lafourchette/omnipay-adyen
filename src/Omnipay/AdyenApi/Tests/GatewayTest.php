@@ -6,6 +6,7 @@ use Guzzle\Http\ClientInterface as HttpClient;
 use Prophecy\Prophecy\ObjectProphecy;
 use Symfony\Component\HttpFoundation\Request as HttpRequest;
 use Omnipay\AdyenApi\Message\Payment\Authorise\Request as AuthorizeRequest;
+use Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Request as ListRecurringDetailsRequest;
 
 /**
  * Class GatewayTest
@@ -128,6 +129,8 @@ class GatewayTest extends \PHPUnit_Framework_TestCase
         );
     }
 
+    /**
+     */
     public function testAuthorize()
     {
         $parameters = array(
@@ -158,19 +161,21 @@ class GatewayTest extends \PHPUnit_Framework_TestCase
         );
     }
 
+    /**
+     */
     public function testListRecurringDetails()
     {
         $parameters = array(
-            'apiUser' => 'myApiUser',
-            'apiPassword' => 'myApiPassword',
+            'apiUser' => 'myApiUser2',
+            'apiPassword' => 'myApiPassword2',
         );
         $defaultParameters = $this->gateway->getDefaultParameters();
 
-        /** @var AuthorizeRequest $request */
-        $request = $this->gateway->authorize($parameters);
+        /** @var ListRecurringDetailsRequest $request */
+        $request = $this->gateway->listRecurringDetails($parameters);
 
         $this->assertInstanceOf(
-            'Omnipay\\AdyenApi\\Message\\Payment\\Authorise\\Request',
+            'Omnipay\\AdyenApi\\Message\\Recurring\\ListRecurringDetails\\Request',
             $request
         );
 
