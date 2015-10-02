@@ -25,25 +25,15 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Response::getPspReference
      * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Response::getResultCode
      * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Response::getAuthCode
-     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Response::getStatus
-     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Response::getErrorCode
-     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Response::getMessage
-     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Response::getErrorType
      * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Response::getRefusalReason
      */
     public function testGetter()
     {
         $data = array(
-            'pspReference' => 'pspReference',
             'resultCode' => 'resultCode',
             'authCode' => 'authCode',
-            'status' => 'status',
-            'errorCode' => 'errorCode',
-            'message' => 'message',
-            'errorType' => 'errorType',
             'refusalReason' => 'refusalReason',
         );
         $response = new Response(
@@ -51,13 +41,8 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
             json_encode($data)
         );
 
-        $this->assertSame($data['pspReference'], $response->getPspReference());
         $this->assertSame($data['resultCode'], $response->getResultCode());
         $this->assertSame($data['authCode'], $response->getAuthCode());
-        $this->assertSame($data['status'], $response->getStatus());
-        $this->assertSame($data['errorCode'], $response->getErrorCode());
-        $this->assertSame($data['message'], $response->getMessage());
-        $this->assertSame($data['errorType'], $response->getErrorType());
         $this->assertSame($data['refusalReason'], $response->getRefusalReason());
     }
 
@@ -67,7 +52,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     {
         $response = new Response(
             $this->request->reveal(),
-            json_encode(array('resultCode' => 'Authorised'))
+            json_encode(array('resultCode' => Response::STATUS_AUTHORISED))
         );
 
         $this->assertTrue($response->isSuccessful());
