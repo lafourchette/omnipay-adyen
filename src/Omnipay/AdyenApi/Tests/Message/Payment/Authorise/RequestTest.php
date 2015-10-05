@@ -42,6 +42,8 @@ class RequestTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::appendAdditionalData
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::getData
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::appendParameter
      */
     public function testGetDataWithBasicData()
     {
@@ -74,6 +76,8 @@ class RequestTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::appendAdditionalData
      * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::appendAdditionalAmountData
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::getData
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::appendParameter
      */
     public function testGetDataWithAdditionalAmount()
     {
@@ -112,6 +116,8 @@ class RequestTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::appendAdditionalData
      * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::appendRecurringData
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::getData
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::appendParameter
      */
     public function testGetDataWithRecurringData()
     {
@@ -150,6 +156,8 @@ class RequestTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::appendAdditionalData
      * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::appendShopperData
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::getData
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::appendParameter
      */
     public function testGetDataWithShopperData()
     {
@@ -186,6 +194,8 @@ class RequestTest extends \PHPUnit_Framework_TestCase
      * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::appendAdditionalAmountData
      * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::appendRecurringData
      * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::appendShopperData
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::getData
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::appendParameter
      */
     public function testGetDataWithAllData()
     {
@@ -284,6 +294,15 @@ class RequestTest extends \PHPUnit_Framework_TestCase
      *
      * @param string $parameterName
      * @param mixed  $parameterValue
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::getAmountValue
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::getAmountCurrency
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::getAdditionalAmountValue
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::getAdditionalAmountCurrency
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::getRecurringContract
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::getRecurringDetailName
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::getShopperReference
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::getReference
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::getEncryptedForm
      */
     public function testParametersGetAfterInitialize($parameterName, $parameterValue)
     {
@@ -307,6 +326,25 @@ class RequestTest extends \PHPUnit_Framework_TestCase
      *
      * @param string $parameterName
      * @param mixed  $parameterValue
+     *
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::getAmountValue
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::getAmountCurrency
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::getAdditionalAmountValue
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::getAdditionalAmountCurrency
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::getRecurringContract
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::getRecurringDetailName
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::getShopperReference
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::getReference
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::getEncryptedForm
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::setAmountValue
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::setAmountCurrency
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::setAdditionalAmountValue
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::setAdditionalAmountCurrency
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::setRecurringContract
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::setRecurringDetailName
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::setShopperReference
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::setReference
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::setEncryptedForm
      */
     public function testParametersSetGet($parameterName, $parameterValue)
     {

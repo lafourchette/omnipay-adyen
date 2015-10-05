@@ -1,8 +1,8 @@
 <?php
-namespace Omnipay\AdyenApi\Tests\Message\Payment\Authorise;
+namespace Omnipay\AdyenApi\Tests\Message\Payment\Refund;
 
-use Omnipay\AdyenApi\Message\Payment\Authorise\Request;
-use Omnipay\AdyenApi\Message\Payment\Authorise\Response;
+use Omnipay\AdyenApi\Message\Payment\Refund\Request;
+use Omnipay\AdyenApi\Message\Payment\Refund\Response;
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
 
@@ -25,25 +25,19 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Response::getResultCode
-     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Response::getAuthCode
-     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Response::getRefusalReason
+     * @covers Omnipay\AdyenApi\Message\Payment\Refund\Response::getResponse
      */
     public function testGetter()
     {
         $data = array(
-            'resultCode' => 'resultCode',
-            'authCode' => 'authCode',
-            'refusalReason' => 'refusalReason',
+            'response' => 'response',
         );
         $response = new Response(
             $this->request->reveal(),
             json_encode($data)
         );
 
-        $this->assertSame($data['resultCode'], $response->getResultCode());
-        $this->assertSame($data['authCode'], $response->getAuthCode());
-        $this->assertSame($data['refusalReason'], $response->getRefusalReason());
+        $this->assertSame($data['response'], $response->getResponse());
     }
 
     /**
@@ -52,7 +46,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     {
         $response = new Response(
             $this->request->reveal(),
-            json_encode(array('resultCode' => Response::STATUS_AUTHORISED))
+            json_encode(array('response' => Response::RESPONSE_RECEIVED))
         );
 
         $this->assertTrue($response->isSuccessful());
@@ -78,8 +72,8 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     public function getIsNotSuccessfulData()
     {
         return array(
-            'invalid' => array(array('resultCode' => 'plop')),
-            'not_provided' => array(array('resultCode' => null)),
+            'invalid' => array(array('response' => 'plop')),
+            'not_provided' => array(array('response' => null)),
         );
     }
 }
