@@ -44,7 +44,8 @@ class RequestTest extends \PHPUnit_Framework_TestCase
      * @covers Omnipay\AdyenApi\Message\Payment\Refund\Request::getAmountValue
      * @covers Omnipay\AdyenApi\Message\Payment\Refund\Request::getAmountCurrency
      * @covers Omnipay\AdyenApi\Message\Payment\Refund\Request::getReference
-     * @covers Omnipay\AdyenApi\Message\Payment\Refund\Request::getOriginalReference()
+     * @covers Omnipay\AdyenApi\Message\Payment\Refund\Request::getOriginalReference
+     * @covers Omnipay\AdyenApi\Message\Payment\Refund\Request::getData
      */
     public function testGet()
     {
@@ -73,6 +74,8 @@ class RequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers Omnipay\AdyenApi\Message\Payment\Refund\Request::getData
+     * @covers Omnipay\AdyenApi\Message\Payment\Refund\Request::sendData
      */
     public function testSendData()
     {
