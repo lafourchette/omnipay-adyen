@@ -1,0 +1,63 @@
+checks:
+    php: true
+build_failure_conditions:
+    - 'issues.severity(>= MAJOR).new.exists'
+    - 'project.metric("scrutinizer.quality", < 9.5)'
+    - 'project.metric_change("scrutinizer.quality", < -0.05)'
+    - 'project.metric("scrutinizer.test_coverage", < 0.98)'
+    - 'project.metric_change("scrutinizer.test_coverage", < -0.02)'
+
+build:
+    cache:
+        directories:
+            - vendor/
+            - bin/
+    dependencies:
+        override:
+            - composer install
+
+    environment:
+        rabbitmq: false
+        php:
+            version: 5.4.41 # But we use 5.3.10 :/
+            ini:
+                'error_reporting': 22527 #Dev value
+    tests:
+        override:
+            -
+                command: ./bin/phpunit --coverage-clover=coverage-report
+                idle_timeout: 1200 # usually less than 100
+                coverage:
+                    file: 'coverage-report'
+                    format: 'php-clover'
+
+tools:
+    external_code_coverage: false
+    php_code_coverage:      false
+    php_code_sniffer:
+        config:
+            standard: 'PSR2'
+    php_changetracking: true
+    php_cpd: true
+    php_cs_fixer:
+        config:
+            level: 'all'
+    php_mess_detector: true
+    php_pdepend: true
+    php_analyzer: true
+    sensiolabs_security_checker: true
+
+filter:
+    paths:
+        - src/*
+    excluded_paths:
+        - src/*/*/Tests/
+
+coding_style:
+    php:
+        spaces:
+            before_parentheses:
+                closure_definition: true
+            around_operators:
+                concatenation: false
+

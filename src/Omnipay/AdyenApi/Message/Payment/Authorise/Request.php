@@ -243,14 +243,12 @@ class Request extends AbstractPaymentRequest
      */
     protected function appendAdditionalData(array $data)
     {
-        $additionalData = array();
         if ($this->getEncryptedForm() !== null) {
-            $additionalData += array(
-                'card.encrypted.json' => $this->getEncryptedForm(),
+            $data = $this->appendParameter(
+                $data,
+                'additionalData',
+                array('card.encrypted.json' => $this->getEncryptedForm())
             );
-        }
-        if (count($additionalData)) {
-            $data = $this->appendParameter($data, 'additionalData', $additionalData);
         }
 
         return $data;
@@ -263,20 +261,20 @@ class Request extends AbstractPaymentRequest
      */
     protected function appendAdditionalAmountData(array $data)
     {
-        $additionalAmountData = array();
         if ($this->getAdditionalAmountValue() != null) {
-            $additionalAmountData += array(
+            $data = $this->appendParameter(
+                $data,
+                'additionalAmount',
                 /* Amount must be in minor units => no cents */
-                'value' => $this->getAdditionalAmountValue()*100,
+                array('value' => $this->getAdditionalAmountValue()*100)
             );
         }
         if ($this->getAdditionalAmountCurrency() != null) {
-            $additionalAmountData += array(
-                'currency' => $this->getAdditionalAmountCurrency(),
+            $data = $this->appendParameter(
+                $data,
+                'additionalAmount',
+                array('currency' => $this->getAdditionalAmountCurrency())
             );
-        }
-        if (count($additionalAmountData)) {
-            $data = $this->appendParameter($data, 'additionalAmount', $additionalAmountData);
         }
 
         return $data;
@@ -289,19 +287,19 @@ class Request extends AbstractPaymentRequest
      */
     protected function appendRecurringData(array $data)
     {
-        $recurringData = array();
         if ($this->getRecurringContract() !== null) {
-            $recurringData += array(
-                'contract' => $this->getRecurringContract(),
+            $data = $this->appendParameter(
+                $data,
+                'recurring',
+                array('contract' => $this->getRecurringContract())
             );
         }
         if ($this->getRecurringDetailName() !== null) {
-            $recurringData += array(
-                'recurringDetailName' => $this->getRecurringDetailName(),
+            $data = $this->appendParameter(
+                $data,
+                'recurring',
+                array('recurringDetailName' => $this->getRecurringDetailName())
             );
-        }
-        if (count($recurringData)) {
-            $data = $this->appendParameter($data, 'recurring', $recurringData);
         }
 
         return $data;
