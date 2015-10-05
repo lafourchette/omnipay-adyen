@@ -2,6 +2,10 @@
 namespace Omnipay\AdyenApi;
 
 use Omnipay\Common\AbstractGateway;
+use Omnipay\AdyenApi\Message\Payment\Authorise\Request as AuthoriseRequest;
+use Omnipay\AdyenApi\Message\Payment\Refund\Request as RefundRequest;
+use Omnipay\AdyenApi\Message\Payment\CancelOrRefund\Request as CancelOrRefundRequest;
+use Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Request as ListRecurringDetailsRequest;
 
 /**
  * Api Gateway
@@ -88,7 +92,7 @@ class Gateway extends AbstractGateway
     /**
      * @param array $parameters
      *
-     * @return Request
+     * @return AuthoriseRequest
      */
     public function authorize(array $parameters = array())
     {
@@ -98,7 +102,27 @@ class Gateway extends AbstractGateway
     /**
      * @param array $parameters
      *
-     * @return mixed
+     * @return RefundRequest
+     */
+    public function refund(array $parameters = array())
+    {
+        return $this->createRequest('Omnipay\AdyenApi\Message\Payment\Refund\Request', $parameters);
+    }
+
+    /**
+     * @param array $parameters
+     *
+     * @return CancelOrRefundRequest
+     */
+    public function cancelOrRefund(array $parameters = array())
+    {
+        return $this->createRequest('Omnipay\AdyenApi\Message\Payment\CancelOrRefund\Request', $parameters);
+    }
+
+    /**
+     * @param array $parameters
+     *
+     * @return ListRecurringDetailsRequest
      */
     public function listRecurringDetails(array $parameters = array())
     {

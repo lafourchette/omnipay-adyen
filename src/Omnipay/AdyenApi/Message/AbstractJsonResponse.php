@@ -15,7 +15,13 @@ abstract class AbstractJsonResponse extends AbstractResponse
      */
     public function __construct(RequestInterface $request, $data)
     {
-        parent::__construct($request, json_decode($data));
+        $decodedData = json_decode($data);
+        // If $data is an empty json array json_decode will return an array
+        // instead of an object :/
+        if (!is_object($decodedData)) {
+            $decodedData = new \StdClass();
+        }
+        parent::__construct($request, $decodedData);
     }
 
     /**
