@@ -4,6 +4,8 @@ namespace Omnipay\AdyenApi\Tests;
 use Guzzle\Http\ClientInterface as HttpClient;
 use Omnipay\AdyenApi\Gateway;
 use Omnipay\AdyenApi\Message\Payment\Authorise\Request as AuthorizeRequest;
+use Omnipay\AdyenApi\Message\Payment\Refund\Request as RefundRequest;
+use Omnipay\AdyenApi\Message\Payment\CancelOrRefund\Request as CancelOrRefundRequest;
 use Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Request as ListRecurringDetailsRequest;
 use Prophecy\Prophecy\ObjectProphecy;
 use Symfony\Component\HttpFoundation\Request as HttpRequest;
@@ -144,6 +146,70 @@ class GatewayTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf(
             'Omnipay\\AdyenApi\\Message\\Payment\\Authorise\\Request',
+            $request
+        );
+
+        $this->assertSame(
+            $parameters['apiUser'],
+            $request->getApiUser()
+        );
+        $this->assertSame(
+            $parameters['apiPassword'],
+            $request->getApiPassword()
+        );
+        $this->assertSame(
+            $defaultParameters['merchantAccount'],
+            $request->getMerchantAccount()
+        );
+    }
+
+    /**
+     */
+    public function testRefund()
+    {
+        $parameters = array(
+            'apiUser' => 'myApiUser',
+            'apiPassword' => 'myApiPassword',
+        );
+        $defaultParameters = $this->gateway->getDefaultParameters();
+
+        /** @var RefundRequest $request */
+        $request = $this->gateway->refund($parameters);
+
+        $this->assertInstanceOf(
+            'Omnipay\\AdyenApi\\Message\\Payment\\Refund\\Request',
+            $request
+        );
+
+        $this->assertSame(
+            $parameters['apiUser'],
+            $request->getApiUser()
+        );
+        $this->assertSame(
+            $parameters['apiPassword'],
+            $request->getApiPassword()
+        );
+        $this->assertSame(
+            $defaultParameters['merchantAccount'],
+            $request->getMerchantAccount()
+        );
+    }
+
+    /**
+     */
+    public function testCancelOrRefund()
+    {
+        $parameters = array(
+            'apiUser' => 'myApiUser',
+            'apiPassword' => 'myApiPassword',
+        );
+        $defaultParameters = $this->gateway->getDefaultParameters();
+
+        /** @var CancelOrRefundRequest $request */
+        $request = $this->gateway->cancelOrRefund($parameters);
+
+        $this->assertInstanceOf(
+            'Omnipay\\AdyenApi\\Message\\Payment\\CancelOrRefund\\Request',
             $request
         );
 
