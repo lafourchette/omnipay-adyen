@@ -180,7 +180,6 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider getTestGetDetails
-     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::isSuccessful
      *
      * @param array $data
      * @param mixed $expectedGetDetails
@@ -196,6 +195,41 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(
             (is_array($expectedGetDetails) && count($expectedGetDetails)),
             $response->hasDetails()
+        );
+    }
+
+    /**
+     * @dataProvider getTestIsSuccessfullData
+     * @param array $data
+     * @param bool  $isSuccessful
+     */
+    public function testIsSuccessful($data, $isSuccessful)
+    {
+        $response = new Response(
+            $this->request->reveal(),
+            json_encode($data)
+        );
+
+        $this->assertSame(
+            $isSuccessful,
+            $response->isSuccessful()
+        );
+    }
+
+    /**
+     * @return array
+     */
+    public function getTestIsSuccessfullData()
+    {
+        return array(
+            'OK' => array(
+                array('data' => array()),
+                true,
+            ),
+            'KO' => array(
+                array(),
+                false,
+            ),
         );
     }
 
