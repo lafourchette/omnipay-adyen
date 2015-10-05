@@ -96,7 +96,7 @@ class Request extends AbstractPaymentRequest
     {
         $this->validate('amountValue', 'amountCurrency', 'originalReference', 'reference', 'merchantAccount');
 
-        $data = array(
+        return array(
             'merchantAccount' => $this->getMerchantAccount(),
             'modificationAmount' => array(
                 /* Amount must be in minor units => no cents */
@@ -106,8 +106,6 @@ class Request extends AbstractPaymentRequest
             'originalReference' => $this->getOriginalReference(),
             'reference' => $this->getReference(),
         );
-
-        return $data;
     }
 
     /**
