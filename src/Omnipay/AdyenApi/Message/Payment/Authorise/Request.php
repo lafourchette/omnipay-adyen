@@ -18,12 +18,19 @@ use Omnipay\AdyenApi\Message\Payment\AbstractPaymentRequest;
  *  - recurringContract : for recurring payment
  *  - recurringDetailName : for recurring payment
  *  - shopperReference
+ *  - shopperEmail
+ *  - selectedRecurringDetailReference
+ *  - shopperInteraction
  */
 class Request extends AbstractPaymentRequest
 {
     const RECURRING_CONTRACT_TYPE_ONECLICK = 'ONECLICK';
     const RECURRING_CONTRACT_TYPE_RECURRING = 'RECURRING';
     const RECURRING_CONTRACT_TYPE_PAYOUT = 'PAYOUT';
+
+    const SHOPPER_INTERACTION_ECOMMERCE = 'Ecommerce';
+    const SHOPPER_INTERACTION_CONTAUTH = 'ContAuth';
+    const SHOPPER_INTERACTION_MOTO = 'Moto';
 
     /**
      * @return string
@@ -151,6 +158,60 @@ class Request extends AbstractPaymentRequest
     public function setShopperReference($value)
     {
         return $this->setParameter('shopperReference', $value);
+    }
+
+    /**
+     * @return string
+     */
+    public function getShopperEmail()
+    {
+        return $this->getParameter('shopperEmail');
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return Request
+     */
+    public function setShopperEmail($value)
+    {
+        return $this->setParameter('shopperEmail', $value);
+    }
+
+    /**
+     * @return string
+     */
+    public function getShopperInteraction()
+    {
+        return $this->getParameter('shopperInteraction');
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return Request
+     */
+    public function setShopperInteraction($value)
+    {
+        return $this->setParameter('shopperInteraction', $value);
+    }
+
+    /**
+     * @return string
+     */
+    public function getSelectedRecurringDetailReference()
+    {
+        return $this->getParameter('selectedRecurringDetailReference');
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return Request
+     */
+    public function setSelectedRecurringDetailReference($value)
+    {
+        return $this->setParameter('selectedRecurringDetailReference', $value);
     }
 
     /**
@@ -301,6 +362,13 @@ class Request extends AbstractPaymentRequest
                 array('recurringDetailName' => $this->getRecurringDetailName())
             );
         }
+        if ($this->getSelectedRecurringDetailReference() !== null) {
+            $data = $this->appendParameter(
+                $data,
+                'selectedRecurringDetailReference',
+                $this->getSelectedRecurringDetailReference()
+            );
+        }
 
         return $data;
     }
@@ -314,6 +382,12 @@ class Request extends AbstractPaymentRequest
     {
         if ($this->getShopperReference() !== null) {
             $data = $this->appendParameter($data, 'shopperReference', $this->getShopperReference());
+        }
+        if ($this->getShopperEmail() !== null) {
+            $data = $this->appendParameter($data, 'shopperEmail', $this->getShopperEmail());
+        }
+        if ($this->getShopperInteraction() !== null) {
+            $data = $this->appendParameter($data, 'shopperInteraction', $this->getShopperInteraction());
         }
 
         return $data;
