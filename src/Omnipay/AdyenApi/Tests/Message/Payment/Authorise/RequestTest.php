@@ -129,7 +129,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             'encryptedForm' => 'FORM',
             'recurringContract' => 'RecurringContract',
             'recurringDetailName' => 'RecurringDetailName',
-            'selectedRecurringDetailReference' => 'selectedRecurringDetailReference',
+            'selectedRecurringDetailReference' => 'SelectedRecurringDetailReference',
         );
 
         $this->request->initialize($data);
@@ -170,8 +170,8 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             'merchantAccount' => 'MERCHANT',
             'encryptedForm' => 'FORM',
             'shopperReference' => 'ShopperReference',
-            'shopperEmail' => 'shopperEmail',
-            'shopperInteraction' => 'shopperInteraction',
+            'shopperEmail' => 'ShopperEmail',
+            'shopperInteraction' => 'ShopperInteraction',
         );
 
         $this->request->initialize($data);
@@ -216,9 +216,9 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             'recurringContract' => 'RecurringContract',
             'recurringDetailName' => 'RecurringDetailName',
             'shopperReference' => 'ShopperReference',
-            'selectedRecurringDetailReference' => 'selectedRecurringDetailReference',
-            'shopperEmail' => 'shopperEmail',
-            'shopperInteraction' => 'shopperInteraction',
+            'selectedRecurringDetailReference' => 'SelectedRecurringDetailReference',
+            'shopperEmail' => 'ShopperEmail',
+            'shopperInteraction' => 'ShopperInteraction',
         );
 
         $this->request->initialize($data);
