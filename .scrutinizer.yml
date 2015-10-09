@@ -1,11 +1,12 @@
 checks:
-    php: true
+    php:
+        code_rating: true
+        duplication: true
 build_failure_conditions:
     - 'issues.severity(>= MAJOR).new.exists'
-    - 'project.metric("scrutinizer.quality", < 9.5)'
-    - 'project.metric_change("scrutinizer.quality", < -0.05)'
-    - 'project.metric("scrutinizer.test_coverage", < 0.98)'
-    - 'project.metric_change("scrutinizer.test_coverage", < -0.02)'
+    - 'project.metric("scrutinizer.quality", < 9)'
+    - 'project.metric_change("scrutinizer.quality", < -0.10)'
+    - 'project.metric("scrutinizer.test_coverage", < 1)'
 
 build:
     cache:
