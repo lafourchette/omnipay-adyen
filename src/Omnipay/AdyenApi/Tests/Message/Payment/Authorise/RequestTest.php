@@ -129,6 +129,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             'encryptedForm' => 'FORM',
             'recurringContract' => 'RecurringContract',
             'recurringDetailName' => 'RecurringDetailName',
+            'selectedRecurringDetailReference' => 'SelectedRecurringDetailReference',
         );
 
         $this->request->initialize($data);
@@ -148,6 +149,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
                     'contract' => $data['recurringContract'],
                     'recurringDetailName' => $data['recurringDetailName'],
                 ),
+                'selectedRecurringDetailReference' => $data['selectedRecurringDetailReference'],
             ),
             $this->request->getData()
         );
@@ -168,6 +170,8 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             'merchantAccount' => 'MERCHANT',
             'encryptedForm' => 'FORM',
             'shopperReference' => 'ShopperReference',
+            'shopperEmail' => 'ShopperEmail',
+            'shopperInteraction' => 'ShopperInteraction',
         );
 
         $this->request->initialize($data);
@@ -184,6 +188,8 @@ class RequestTest extends \PHPUnit_Framework_TestCase
                     'card.encrypted.json' => $data['encryptedForm'],
                 ),
                 'shopperReference' => $data['shopperReference'],
+                'shopperEmail' => $data['shopperEmail'],
+                'shopperInteraction' => $data['shopperInteraction'],
             ),
             $this->request->getData()
         );
@@ -210,6 +216,9 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             'recurringContract' => 'RecurringContract',
             'recurringDetailName' => 'RecurringDetailName',
             'shopperReference' => 'ShopperReference',
+            'selectedRecurringDetailReference' => 'SelectedRecurringDetailReference',
+            'shopperEmail' => 'ShopperEmail',
+            'shopperInteraction' => 'ShopperInteraction',
         );
 
         $this->request->initialize($data);
@@ -234,6 +243,9 @@ class RequestTest extends \PHPUnit_Framework_TestCase
                     'recurringDetailName' => $data['recurringDetailName'],
                 ),
                 'shopperReference' => $data['shopperReference'],
+                'selectedRecurringDetailReference' => $data['selectedRecurringDetailReference'],
+                'shopperEmail' => $data['shopperEmail'],
+                'shopperInteraction' => $data['shopperInteraction'],
             ),
             $this->request->getData()
         );
@@ -303,6 +315,10 @@ class RequestTest extends \PHPUnit_Framework_TestCase
      * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::getShopperReference
      * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::getReference
      * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::getEncryptedForm
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::getSelectedRecurringDetailReference
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::getShopperInteraction
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::getShopperEmail
+     *
      */
     public function testParametersGetAfterInitialize($parameterName, $parameterValue)
     {
@@ -336,6 +352,9 @@ class RequestTest extends \PHPUnit_Framework_TestCase
      * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::getShopperReference
      * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::getReference
      * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::getEncryptedForm
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::getSelectedRecurringDetailReference
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::getShopperInteraction
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::getShopperEmail
      * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::setAmountValue
      * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::setAmountCurrency
      * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::setAdditionalAmountValue
@@ -345,6 +364,9 @@ class RequestTest extends \PHPUnit_Framework_TestCase
      * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::setShopperReference
      * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::setReference
      * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::setEncryptedForm
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::setSelectedRecurringDetailReference
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::setShopperInteraction
+     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Request::setShopperEmail
      */
     public function testParametersSetGet($parameterName, $parameterValue)
     {
@@ -392,6 +414,9 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             'SHOPPER_REFERENCE' => array('shopperReference', 'MyShopperReference'),
             'REFERENCE' => array('reference', 'MyReference'),
             'ENCRYPTED_FORM' => array('encryptedForm', 'MyEncryptedForm'),
+            'SHOPPER_EMAIL' => array('shopperEmail', 'MyShopperEmail'),
+            'SELECTED_RECURRING_DETAIL_REFERENCE' => array('selectedRecurringDetailReference', 'MySelectedRecurringDetailReference'),
+            'SHOPPER_INTERACTION' => array('shopperInteraction', 'MyShopperInteraction'),
         );
     }
 }
