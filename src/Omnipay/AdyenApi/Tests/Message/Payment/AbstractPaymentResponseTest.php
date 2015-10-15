@@ -25,6 +25,7 @@ class AbstractPaymentResponseTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers Omnipay\AdyenApi\Message\Payment\AbstractPaymentResponse::getPspReference
+     * @covers Omnipay\AdyenApi\Message\Payment\AbstractPaymentResponse::getTransactionReference
      * @covers Omnipay\AdyenApi\Message\Payment\AbstractPaymentResponse::getStatus
      * @covers Omnipay\AdyenApi\Message\Payment\AbstractPaymentResponse::getErrorCode
      * @covers Omnipay\AdyenApi\Message\Payment\AbstractPaymentResponse::getMessage
@@ -45,6 +46,7 @@ class AbstractPaymentResponseTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertSame($data['pspReference'], $response->getPspReference());
+        $this->assertSame($data['pspReference'], $response->getTransactionReference());
         $this->assertSame($data['status'], $response->getStatus());
         $this->assertSame($data['errorCode'], $response->getErrorCode());
         $this->assertSame($data['message'], $response->getMessage());

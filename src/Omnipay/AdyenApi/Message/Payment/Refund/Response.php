@@ -26,6 +26,6 @@ class Response extends AbstractPaymentResponse
      */
     public function getResponse()
     {
-        return $this->getData()->response;
+        return $this->getDataValue('response');
     }
 }
