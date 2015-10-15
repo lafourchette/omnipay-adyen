@@ -89,20 +89,19 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
             $response->getShopperReference(),
             'shopperReference'
         );
-        // json_decode/json_encode is used to convert StdClass to array
         $this->assertEquals(
             $data['details'][0]['RecurringDetail'],
-            json_decode(json_encode($response->getRecurringDetail()), true),
+            $response->getRecurringDetail(),
             'RecurringDetail'
         );
         $this->assertEquals(
             $data['details'][0]['RecurringDetail']['additionalData'],
-            json_decode(json_encode($response->getAdditionalData()), true),
+            $response->getAdditionalData(),
             'additionalData'
         );
         $this->assertEquals(
             $data['details'][0]['RecurringDetail']['additionalData']['cardBin'],
-            json_decode(json_encode($response->getCardBin()), true),
+            $response->getCardBin(),
             'cardBin'
         );
         $this->assertSame(
