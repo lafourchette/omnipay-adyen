@@ -44,14 +44,16 @@ abstract class AbstractJsonResponse extends AbstractResponse
     }
 
     /**
-     * @param array $keysPath
+     * Function accept N arguments (not only one) like sum or var_dump function
      *
-     * @return mixed|null null in case of one of data value is not defined
+     * @param string $key,... unlimited number of additional key
+     *
+     * @return mixed|null
      */
-    public function getNestedDataValue(array $keysPath)
+    public function getNestedDataValue($key)
     {
         $currentData = $this->data;
-        foreach ($keysPath as $key) {
+        foreach (func_get_args() as $key) {
             if (!isset($currentData[$key])) {
                 return null;
             }

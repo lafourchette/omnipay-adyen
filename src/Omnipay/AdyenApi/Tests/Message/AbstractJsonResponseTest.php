@@ -97,7 +97,7 @@ class AbstractJsonResponseTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame(
             $testValue,
-            $abstractJsonResponse->getNestedDataValue(array($testKey, $testKey2, $testKey3))
+            $abstractJsonResponse->getNestedDataValue($testKey, $testKey2, $testKey3)
         );
     }
 
@@ -124,7 +124,7 @@ class AbstractJsonResponseTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame(
             null,
-            $abstractJsonResponse->getNestedDataValue(array($testKey, $testKey2, $testKey3))
+            $abstractJsonResponse->getNestedDataValue($testKey, $testKey2, $testKey3)
         );
     }
 
