@@ -37,7 +37,7 @@ abstract class AbstractPaymentResponse extends AbstractJsonResponse
      */
     public function getTransactionReference()
     {
-        return $this->getData()->pspReference;
+        return $this->getDataValue('pspReference');
     }
 
     /**
@@ -48,7 +48,7 @@ abstract class AbstractPaymentResponse extends AbstractJsonResponse
      */
     public function getStatus()
     {
-        return $this->getData()->status;
+        return $this->getDataValue('status');
     }
 
     /**
@@ -60,7 +60,7 @@ abstract class AbstractPaymentResponse extends AbstractJsonResponse
      */
     public function getErrorCode()
     {
-        return $this->getData()->errorCode;
+        return $this->getDataValue('errorCode');
     }
 
     /**
@@ -72,7 +72,7 @@ abstract class AbstractPaymentResponse extends AbstractJsonResponse
      */
     public function getMessage()
     {
-        return $this->getData()->message;
+        return $this->getDataValue('message');
     }
 
     /**
@@ -85,6 +85,6 @@ abstract class AbstractPaymentResponse extends AbstractJsonResponse
      */
     public function getErrorType()
     {
-        return $this->getData()->errorType;
+        return $this->getDataValue('errorType');
     }
 }

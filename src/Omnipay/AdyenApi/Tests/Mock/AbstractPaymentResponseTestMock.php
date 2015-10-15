@@ -15,6 +15,6 @@ class AbstractPaymentResponseTestMock extends AbstractPaymentResponse
      */
     public function isSuccessful()
     {
-        return $this->getData()->success;
+        return $this->getDataValue('success');
     }
 }

@@ -22,7 +22,7 @@ class Response extends AbstractJsonResponse
      */
     public function getCreationDate()
     {
-        return $this->getData()->creationDate;
+        return $this->getDataValue('creationDate');
     }
 
     /**
@@ -31,11 +31,7 @@ class Response extends AbstractJsonResponse
      */
     public function getDetails()
     {
-        if (!property_exists($this->getData(), 'details')) {
-            return null;
-        }
-
-        return $this->getData()->details;
+        return $this->getDataValue('details');
     }
 
     /**
@@ -45,9 +41,7 @@ class Response extends AbstractJsonResponse
      */
     public function getOneDetails($detailNumber = 0)
     {
-        $details = $this->getDetails();
-
-        return $details[$detailNumber];
+        return $this->getDataValue('details', $detailNumber);
     }
 
     /**
@@ -55,7 +49,7 @@ class Response extends AbstractJsonResponse
      */
     public function getShopperReference()
     {
-        return $this->getData()->shopperReference;
+        return $this->getDataValue('shopperReference');
     }
 
     /**
@@ -65,7 +59,7 @@ class Response extends AbstractJsonResponse
      */
     public function getRecurringDetail($detailNumber = 0)
     {
-        return $this->getOneDetails($detailNumber)->RecurringDetail;
+        return $this->getDataValue('details', $detailNumber, 'RecurringDetail');
     }
 
     /**
@@ -75,7 +69,7 @@ class Response extends AbstractJsonResponse
      */
     public function getAdditionalData($detailNumber = 0)
     {
-        return $this->getRecurringDetail($detailNumber)->additionalData;
+        return $this->getDataValue('details', $detailNumber, 'RecurringDetail', 'additionalData');
     }
 
     /**
@@ -85,7 +79,7 @@ class Response extends AbstractJsonResponse
      */
     public function getCardBin($detailNumber = 0)
     {
-        return $this->getAdditionalData($detailNumber)->cardBin;
+        return $this->getDataValue('details', $detailNumber, 'RecurringDetail', 'additionalData', 'cardBin');
     }
 
     /**
@@ -95,7 +89,7 @@ class Response extends AbstractJsonResponse
      */
     public function getAlias($detailNumber = 0)
     {
-        return $this->getRecurringDetail($detailNumber)->alias;
+        return $this->getDataValue('details', $detailNumber, 'RecurringDetail', 'alias');
     }
 
     /**
@@ -105,7 +99,7 @@ class Response extends AbstractJsonResponse
      */
     public function getAliasType($detailNumber = 0)
     {
-        return $this->getRecurringDetail($detailNumber)->aliasType;
+        return $this->getDataValue('details', $detailNumber, 'RecurringDetail', 'aliasType');
     }
 
     /**
@@ -115,7 +109,7 @@ class Response extends AbstractJsonResponse
      */
     public function getCard($detailNumber = 0)
     {
-        return $this->getRecurringDetail($detailNumber)->card;
+        return $this->getDataValue('details', $detailNumber, 'RecurringDetail', 'card');
     }
 
     /**
@@ -125,7 +119,7 @@ class Response extends AbstractJsonResponse
      */
     public function getExpiryMonth($detailNumber = 0)
     {
-        return $this->getCard($detailNumber)->expiryMonth;
+        return $this->getDataValue('details', $detailNumber, 'RecurringDetail', 'card', 'expiryMonth');
     }
 
     /**
@@ -135,7 +129,7 @@ class Response extends AbstractJsonResponse
      */
     public function getExpiryYear($detailNumber = 0)
     {
-        return $this->getCard($detailNumber)->expiryYear;
+        return $this->getDataValue('details', $detailNumber, 'RecurringDetail', 'card', 'expiryYear');
     }
 
     /**
@@ -145,7 +139,7 @@ class Response extends AbstractJsonResponse
      */
     public function getHolderName($detailNumber = 0)
     {
-        return $this->getCard($detailNumber)->holderName;
+        return $this->getDataValue('details', $detailNumber, 'RecurringDetail', 'card', 'holderName');
     }
 
     /**
@@ -155,7 +149,7 @@ class Response extends AbstractJsonResponse
      */
     public function getNumber($detailNumber = 0)
     {
-        return $this->getCard($detailNumber)->number;
+        return $this->getDataValue('details', $detailNumber, 'RecurringDetail', 'card', 'number');
     }
 
     /**
@@ -165,7 +159,7 @@ class Response extends AbstractJsonResponse
      */
     public function getContractTypes($detailNumber = 0)
     {
-        return $this->getRecurringDetail($detailNumber)->contractTypes;
+        return $this->getDataValue('details', $detailNumber, 'RecurringDetail', 'contractTypes');
     }
 
     /**
@@ -175,7 +169,7 @@ class Response extends AbstractJsonResponse
      */
     public function getFirstPspReference($detailNumber = 0)
     {
-        return $this->getRecurringDetail($detailNumber)->firstPspReference;
+        return $this->getDataValue('details', $detailNumber, 'RecurringDetail', 'firstPspReference');
     }
 
     /**
@@ -185,7 +179,7 @@ class Response extends AbstractJsonResponse
      */
     public function getName($detailNumber = 0)
     {
-        return $this->getRecurringDetail($detailNumber)->name;
+        return $this->getDataValue('details', $detailNumber, 'RecurringDetail', 'name');
     }
 
     /**
@@ -195,7 +189,7 @@ class Response extends AbstractJsonResponse
      */
     public function getPaymentMethodVariant($detailNumber = 0)
     {
-        return $this->getRecurringDetail($detailNumber)->paymentMethodVariant;
+        return $this->getDataValue('details', $detailNumber, 'RecurringDetail', 'paymentMethodVariant');
     }
 
     /**
@@ -205,7 +199,7 @@ class Response extends AbstractJsonResponse
      */
     public function getRecurringDetailReference($detailNumber = 0)
     {
-        return $this->getRecurringDetail($detailNumber)->recurringDetailReference;
+        return $this->getDataValue('details', $detailNumber, 'RecurringDetail', 'recurringDetailReference');
     }
 
     /**
@@ -215,7 +209,7 @@ class Response extends AbstractJsonResponse
      */
     public function getVariant($detailNumber = 0)
     {
-        return $this->getRecurringDetail($detailNumber)->variant;
+        return $this->getDataValue('details', $detailNumber, 'RecurringDetail', 'variant');
     }
 
     /**
@@ -223,7 +217,7 @@ class Response extends AbstractJsonResponse
      */
     public function hasData()
     {
-        return count(get_object_vars($this->getData())) > 0;
+        return count($this->getData()) > 0;
     }
 
     /**

@@ -76,7 +76,7 @@ class AbstractJsonResponseTest extends \PHPUnit_Framework_TestCase
 
     /**
      */
-    public function testGetNestedDataValue()
+    public function testGetDataValueWithNestedValue()
     {
         $testKey = 'test1';
         $testKey2 = 'test2';
@@ -97,13 +97,13 @@ class AbstractJsonResponseTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame(
             $testValue,
-            $abstractJsonResponse->getNestedDataValue($testKey, $testKey2, $testKey3)
+            $abstractJsonResponse->getDataValue($testKey, $testKey2, $testKey3)
         );
     }
 
     /**
      */
-    public function testGetNestedDataValueWithUndefinedValue()
+    public function testGetDataValueWithUndefinedNestedValue()
     {
         $testKey = 'test1';
         $testKey2 = 'test2';
@@ -124,7 +124,7 @@ class AbstractJsonResponseTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame(
             null,
-            $abstractJsonResponse->getNestedDataValue($testKey, $testKey2, $testKey3)
+            $abstractJsonResponse->getDataValue($testKey, $testKey2, $testKey3)
         );
     }
 

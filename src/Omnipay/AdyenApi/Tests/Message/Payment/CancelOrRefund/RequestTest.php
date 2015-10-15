@@ -86,7 +86,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             true,
-            $response->getData()->ok
+            $response->getDataValue('ok')
         );
     }
 
