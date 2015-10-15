@@ -27,7 +27,7 @@ class Response extends AbstractPaymentResponse
      */
     public function getResultCode()
     {
-        return $this->getData()->resultCode;
+        return $this->getDataValue('resultCode');
     }
 
     /**
@@ -38,7 +38,7 @@ class Response extends AbstractPaymentResponse
      */
     public function getAuthCode()
     {
-        return $this->getData()->authCode;
+        return $this->getDataValue('authCode');
     }
 
     /**
@@ -50,6 +50,6 @@ class Response extends AbstractPaymentResponse
      */
     public function getRefusalReason()
     {
-        return $this->getData()->refusalReason;
+        return $this->getDataValue('refusalReason');
     }
 }

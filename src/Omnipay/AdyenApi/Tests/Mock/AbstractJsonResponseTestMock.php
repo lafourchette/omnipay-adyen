@@ -15,6 +15,6 @@ class AbstractJsonResponseTestMock extends AbstractJsonResponse
      */
     public function isSuccessful()
     {
-        return $this->getData()->success;
+        return $this->getDataValue('success');
     }
 }
