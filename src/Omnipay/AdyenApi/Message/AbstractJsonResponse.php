@@ -32,11 +32,11 @@ abstract class AbstractJsonResponse extends AbstractResponse
     /**
      * Function accept N arguments (not only one) like sum or var_dump function
      *
-     * @param string $key,... unlimited number of additional key
+     * @param string $firstKey,... unlimited number of additional key
      *
      * @return null|mixed null in case of data value is not defined
      */
-    public function getDataValue($key)
+    public function getDataValue($firstKey)
     {
         $currentData = $this->data;
         foreach (func_get_args() as $key) {
