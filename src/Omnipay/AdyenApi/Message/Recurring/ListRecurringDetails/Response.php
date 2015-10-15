@@ -27,7 +27,7 @@ class Response extends AbstractJsonResponse
 
     /**
      * In some cases details is not provided (contract not already created on adyen side)
-     * @return \stdClass[]|null
+     * @return array[]|null
      */
     public function getDetails()
     {
@@ -37,7 +37,7 @@ class Response extends AbstractJsonResponse
     /**
      * @param int $detailNumber
      *
-     * @return \stdClass
+     * @return array
      */
     public function getOneDetails($detailNumber = 0)
     {
@@ -55,7 +55,7 @@ class Response extends AbstractJsonResponse
     /**
      * @param int $detailNumber
      *
-     * @return \stdClass
+     * @return array
      */
     public function getRecurringDetail($detailNumber = 0)
     {
@@ -65,7 +65,7 @@ class Response extends AbstractJsonResponse
     /**
      * @param int $detailNumber
      *
-     * @return \stdClass
+     * @return array
      */
     public function getAdditionalData($detailNumber = 0)
     {
@@ -105,7 +105,7 @@ class Response extends AbstractJsonResponse
     /**
      * @param int $detailNumber
      *
-     * @return \stdClass
+     * @return array
      */
     public function getCard($detailNumber = 0)
     {
