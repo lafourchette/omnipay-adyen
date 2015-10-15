@@ -20,10 +20,22 @@ abstract class AbstractPaymentResponse extends AbstractJsonResponse
     /**
      * Available if call is successful
      * The unique reference that is associated with the payment
+     * @deprecated since  2.0.0 and will be removed on 3.0.0
      *
      * @return string
      */
     public function getPspReference()
+    {
+        return $this->getTransactionReference();
+    }
+
+    /**
+     * Available if call is successful
+     * The unique reference that is associated with the payment
+     *
+     * @return string
+     */
+    public function getTransactionReference()
     {
         return $this->getData()->pspReference;
     }
