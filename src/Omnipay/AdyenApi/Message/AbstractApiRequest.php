@@ -1,8 +1,10 @@
 <?php
 namespace Omnipay\AdyenApi\Message;
 
+use Guzzle\Http\Exception\ClientErrorResponseException;
 use Guzzle\Http\Message\Response;
 use Omnipay\Common\Message\AbstractRequest;
+use Symfony\Component\HttpFoundation\Response as HttpFoundationResponse;
 
 /**
  * Base Adyen Request
@@ -16,6 +18,8 @@ abstract class AbstractApiRequest extends AbstractRequest
     /** MUST BE DEFINED BY EXTENDING CLASS */
     protected $liveEndpoint = null;
     protected $testEndpoint = null;
+
+    private $handleUnprocessableEntity = false;
 
     /**
      * @return string the method name (ex : authorize, capture, ...)
@@ -89,6 +93,37 @@ abstract class AbstractApiRequest extends AbstractRequest
         $request->setBody(json_encode($data));
         $request->setHeader('Content-Type', 'application/json;charset=utf-8');
 
-        return $request->send();
+        try {
+            $response = $request->send();
+        } catch (ClientErrorResponseException $e) {
+            // Adyen will return a 422 http code in case entity is invalid
+            // but adyen still return some data (as errors for example)
+            // Usefull for authorise call for example to catch invalid CVC or invalid card number
+            if (
+                $this->getHandleUnprocessableEntity()
+                && $e->getResponse()->getStatusCode() == HttpFoundationResponse::HTTP_UNPROCESSABLE_ENTITY
+            ) {
+                return $e->getResponse();
+            }
+            throw $e;
+        }
+
+        return $response;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getHandleUnprocessableEntity()
+    {
+        return $this->handleUnprocessableEntity;
+    }
+
+    /**
+     * @param boolean $handleUnprocessableEntity
+     */
+    public function setHandleUnprocessableEntity($handleUnprocessableEntity)
+    {
+        $this->handleUnprocessableEntity = $handleUnprocessableEntity == true;
     }
 }
