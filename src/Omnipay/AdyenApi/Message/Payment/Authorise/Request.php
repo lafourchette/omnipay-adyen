@@ -284,6 +284,7 @@ class Request extends AbstractPaymentRequest
      */
     public function sendData($data)
     {
+        $this->setHandleUnprocessableEntity(true);
         $httpResponse = $this->getHttpResponse($data);
 
         return ($this->response = new Response($this, $httpResponse->getBody()));
