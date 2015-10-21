@@ -13,5 +13,5 @@ class ErrorType
     const SECURITY = 'security';
     const CONFIGURATION = 'configuration';
 
-    const UNKNOW = 'unknow';
+    const UNKNOWN = 'unknown';
 }
