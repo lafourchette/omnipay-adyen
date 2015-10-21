@@ -85,6 +85,8 @@ abstract class AbstractApiRequest extends AbstractRequest
      * @param mixed $data
      *
      * @return Response
+     *
+     * @throws ClientErrorResponseException
      */
     public function getHttpResponse($data)
     {
@@ -124,6 +126,6 @@ abstract class AbstractApiRequest extends AbstractRequest
      */
     public function setHandleUnprocessableEntity($handleUnprocessableEntity)
     {
-        $this->handleUnprocessableEntity = $handleUnprocessableEntity == true;
+        $this->handleUnprocessableEntity = (boolean) $handleUnprocessableEntity;
     }
 }
