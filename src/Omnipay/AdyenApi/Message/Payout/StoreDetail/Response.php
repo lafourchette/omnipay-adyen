@@ -33,7 +33,7 @@ class Response extends AbstractPayoutResponse
 
     /**
      * Available if call is successful
-     * The unique reference that is associated with the payment
+     * The unique reference that is associated with the recurring contract
      *
      * @return string
      */

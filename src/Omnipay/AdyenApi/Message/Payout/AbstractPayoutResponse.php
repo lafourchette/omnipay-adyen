@@ -19,7 +19,7 @@ abstract class AbstractPayoutResponse extends AbstractJsonResponse
 {
     /**
      * Available if call is successful
-     * The unique reference that is associated with the payment
+     * The unique reference that is associated with the payout detail
      *
      * @return string
      */

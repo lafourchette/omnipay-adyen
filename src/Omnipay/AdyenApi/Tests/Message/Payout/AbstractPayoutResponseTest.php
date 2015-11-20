@@ -1,12 +1,12 @@
 <?php
-namespace Omnipay\AdyenApi\Tests\Message\Payment;
+namespace Omnipay\AdyenApi\Tests\Message\Payout;
 
 use Omnipay\AdyenApi\Tests\Mock\AbstractPayoutResponseTestMock;
 use Omnipay\Common\Message\RequestInterface;
 use Prophecy\Prophecy\ObjectProphecy;
 
 /**
- * Class AbstractPaymentRequestTest
+ * Class AbstractPayoutResponseTest
  */
 class AbstractPayoutResponseTest extends \PHPUnit_Framework_TestCase
 {

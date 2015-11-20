@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request as HttpRequest;
 class AbstractPayoutRequestTest extends \PHPUnit_Framework_TestCase
 {
     /** @var AbstractPayoutRequest|ObjectProphecy */
-    private $abstractPaymentRequest;
+    private $abstractPayoutRequest;
 
     /** @var HttpClient|ObjectProphecy */
     private $httpClient;
@@ -30,27 +30,27 @@ class AbstractPayoutRequestTest extends \PHPUnit_Framework_TestCase
 
         $this->httpClient = $this->prophesize('Guzzle\Http\ClientInterface');
         $this->httpRequest = $this->prophesize('Symfony\Component\HttpFoundation\Request');
-        $this->abstractPaymentRequest = new AbstractPayoutRequestTestMock(
+        $this->abstractPayoutRequest = new AbstractPayoutRequestTestMock(
             $this->httpClient->reveal(),
             $this->httpRequest->reveal()
         );
-        $this->abstractPaymentRequest->initialize();
+        $this->abstractPayoutRequest->initialize();
     }
 
     /**
      */
     public function testBaseEndpoint()
     {
-        $this->abstractPaymentRequest->setTestMode(false);
+        $this->abstractPayoutRequest->setTestMode(false);
         $this->assertSame(
             'https://pal-live.adyen.com/pal/servlet/Payout/v12/',
-            $this->abstractPaymentRequest->getBaseEndpoint()
+            $this->abstractPayoutRequest->getBaseEndpoint()
         );
 
-        $this->abstractPaymentRequest->setTestMode(true);
+        $this->abstractPayoutRequest->setTestMode(true);
         $this->assertSame(
             'https://pal-test.adyen.com/pal/servlet/Payout/v12/',
-            $this->abstractPaymentRequest->getBaseEndpoint()
+            $this->abstractPayoutRequest->getBaseEndpoint()
         );
     }
 }
