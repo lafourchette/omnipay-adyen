@@ -44,7 +44,8 @@ tools:
             checkstyle:
                 enabled: true
                 naming:
-                    isser_method_name: ^.*
+                    isser_method_name: ^.*$
+                    utility_class_name: ^.*$
             doc_comment_fixes:
                 enabled: false
             reflection_fixes:
