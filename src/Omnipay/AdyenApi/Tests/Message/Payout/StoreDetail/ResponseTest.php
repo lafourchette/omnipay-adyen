@@ -98,21 +98,4 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
             ),
         );
     }
-
-    /**
-     * @return array
-     */
-    public function getTestGetDetails()
-    {
-        $baseData = array(
-            'creationDate' => '2015-07-30T22:54:13+02:00',
-            'shopperReference' => '14194858',
-        );
-
-        return array(
-            array($baseData + array('details' => array()), array()),
-            array($baseData + array('details' => array(array())), array(array())),
-            array($baseData, null),
-        );
-    }
 }
