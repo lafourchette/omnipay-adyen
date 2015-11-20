@@ -2,8 +2,8 @@
 namespace Omnipay\AdyenApi\Tests\Message\Payment;
 
 use Omnipay\AdyenApi\Tests\Mock\AbstractPaymentResponseTestMock;
-use Prophecy\Prophecy\ObjectProphecy;
 use Omnipay\Common\Message\RequestInterface;
+use Prophecy\Prophecy\ObjectProphecy;
 
 /**
  * Class AbstractPaymentRequestTest
