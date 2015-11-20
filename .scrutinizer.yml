@@ -9,7 +9,7 @@ build_failure_conditions:
     - 'issues.label("coding-style").exists'        # No coding style issues allowed
     - 'issues.label("coding-style").new.exists'    # No new coding style issues allowed
     - 'issues.severity(>= MAJOR).new.exists'       # New issues of major or higher severity
-    - 'project.metric("scrutinizer.quality", < 9)' # Code Quality Rating drops below 9.9
+    - 'project.metric("scrutinizer.quality", < 9)' # Code Quality Rating drops below 9
     - 'project.metric("scrutinizer.test_coverage", < 0.98)' # Code Coverage drops below 98%
     # Code Coverage decreased from previous inspection by more than 2%
     - 'project.metric_change("scrutinizer.test_coverage", < -0.02)'
