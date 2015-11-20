@@ -134,7 +134,7 @@ class Request extends AbstractPayoutRequest
      */
     public function getData()
     {
-        $this->validate('shopperEmail', 'shopperReference');
+        $this->validate('shopperEmail', 'shopperReference', 'merchantAccount');
 
         $data = array(
             'recurring' => array(
@@ -142,6 +142,7 @@ class Request extends AbstractPayoutRequest
             ),
             'shopperEmail' => $this->getShopperEmail(),
             'shopperReference' => $this->getShopperReference(),
+            'merchantAccount' => $this->getMerchantAccount(),
         );
 
         return $this->appendBankData($data);

@@ -4,13 +4,13 @@ namespace Omnipay\AdyenApi\Tests\Message;
 use Guzzle\Http\ClientInterface as HttpClient;
 use Guzzle\Http\Exception\ClientErrorResponseException;
 use Guzzle\Http\Message\EntityEnclosingRequestInterface;
+use Guzzle\Http\Message\Response as GuzzleResponse;
 use Guzzle\Http\Message\Response;
 use Omnipay\AdyenApi\Message\AbstractApiRequest;
 use Omnipay\AdyenApi\Tests\Mock\AbstractApiRequestTestMock;
 use Prophecy\Prophecy\ObjectProphecy;
 use Symfony\Component\HttpFoundation\Request as HttpRequest;
 use Symfony\Component\HttpFoundation\Response as HttpFoundationResponse;
-use Guzzle\Http\Message\Response as GuzzleResponse;
 
 /**
  * Class AbstractApiRequestTest

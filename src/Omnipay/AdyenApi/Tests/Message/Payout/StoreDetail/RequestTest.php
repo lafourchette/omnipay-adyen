@@ -63,6 +63,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
                 ),
                 'shopperEmail' => $data['shopperEmail'],
                 'shopperReference' => $data['shopperReference'],
+                'merchantAccount' => $data['merchantAccount'],
             ),
             $this->request->getData()
         );
@@ -95,6 +96,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
                 ),
                 'shopperEmail' => $data['shopperEmail'],
                 'shopperReference' => $data['shopperReference'],
+                'merchantAccount' => $data['merchantAccount'],
             ),
             $this->request->getData()
         );
