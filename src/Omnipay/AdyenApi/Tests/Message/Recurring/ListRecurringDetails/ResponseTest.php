@@ -25,24 +25,6 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::getCreationDate
-     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::getShopperReference
-     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::getRecurringDetail
-     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::getAdditionalData
-     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::getCardBin
-     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::getAlias
-     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::getAliasType
-     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::getCard
-     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::getExpiryMonth
-     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::getExpiryYear
-     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::getHolderName
-     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::getNumber
-     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::getContractTypes
-     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::getFirstPspReference
-     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::getName
-     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::getPaymentMethodVariant
-     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::getRecurringDetailReference
-     * @covers Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Response::getVariant
      */
     public function testGetter()
     {

@@ -41,11 +41,6 @@ class RequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Omnipay\AdyenApi\Message\Payment\Refund\Request::getAmountValue
-     * @covers Omnipay\AdyenApi\Message\Payment\Refund\Request::getAmountCurrency
-     * @covers Omnipay\AdyenApi\Message\Payment\Refund\Request::getReference
-     * @covers Omnipay\AdyenApi\Message\Payment\Refund\Request::getOriginalReference
-     * @covers Omnipay\AdyenApi\Message\Payment\Refund\Request::getData
      */
     public function testGet()
     {
@@ -74,8 +69,6 @@ class RequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Omnipay\AdyenApi\Message\Payment\Refund\Request::getData
-     * @covers Omnipay\AdyenApi\Message\Payment\Refund\Request::sendData
      */
     public function testSendData()
     {
@@ -131,10 +124,6 @@ class RequestTest extends \PHPUnit_Framework_TestCase
      * @param string $parameterName
      * @param mixed  $parameterValue
      *
-     * @covers Omnipay\AdyenApi\Message\Payment\Refund\Request::getAmountValue
-     * @covers Omnipay\AdyenApi\Message\Payment\Refund\Request::getAmountCurrency
-     * @covers Omnipay\AdyenApi\Message\Payment\Refund\Request::getReference
-     * @covers Omnipay\AdyenApi\Message\Payment\Refund\Request::getOriginalReference()
      */
     public function testParametersGetAfterInitialize($parameterName, $parameterValue)
     {
@@ -159,14 +148,6 @@ class RequestTest extends \PHPUnit_Framework_TestCase
      * @param string $parameterName
      * @param mixed  $parameterValue
      *
-     * @covers Omnipay\AdyenApi\Message\Payment\Refund\Request::getAmountValue
-     * @covers Omnipay\AdyenApi\Message\Payment\Refund\Request::getAmountCurrency
-     * @covers Omnipay\AdyenApi\Message\Payment\Refund\Request::getReference
-     * @covers Omnipay\AdyenApi\Message\Payment\Refund\Request::getOriginalReference()
-     * @covers Omnipay\AdyenApi\Message\Payment\Refund\Request::setAmountValue
-     * @covers Omnipay\AdyenApi\Message\Payment\Refund\Request::setAmountCurrency
-     * @covers Omnipay\AdyenApi\Message\Payment\Refund\Request::setReference
-     * @covers Omnipay\AdyenApi\Message\Payment\Refund\Request::setOriginalReference()
      */
     public function testParametersSetGet($parameterName, $parameterValue)
     {
