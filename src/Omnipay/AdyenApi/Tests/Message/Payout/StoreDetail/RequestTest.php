@@ -77,8 +77,8 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             'shopperReference' => 'REF',
             'shopperEmail' => 'shopperEmail',
             'iban' => 'iban',
-            'ownerName' => 'ownerName',
-            'countryCode' => 'countryCode',
+            'ibanOwnerName' => 'ibanOwnerName',
+            'bankCountryCode' => 'bankCountryCode',
         );
 
         $this->request->initialize($data);
@@ -87,8 +87,8 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             array(
                 'bank' => array(
                     'iban' => $data['iban'],
-                    'countryCode' => $data['countryCode'],
-                    'ownerName' => $data['ownerName'],
+                    'countryCode' => $data['bankCountryCode'],
+                    'ownerName' => $data['ibanOwnerName'],
                 ),
                 'recurring' => array(
                     'contract' => 'PAYOUT',
@@ -220,8 +220,8 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             'SHOPPER_REFERENCE' => array('shopperReference', 'MyShopperReference'),
             'SHOPPER_EMAIL' => array('shopperEmail', 'MyShopperEmail'),
             'IBAN' => array('iban', 'MyIban'),
-            'COUNTRY_CODE' => array('countryCode', 'MyCountryCode'),
-            'OWNER_NAME' => array('ownerName', 'Toto'),
+            'BANK_COUNTRY_CODE' => array('bankCountryCode', 'MyCountryCode'),
+            'IBAN_OWNER_NAME' => array('ibanOwnerName', 'Toto'),
         );
     }
 }

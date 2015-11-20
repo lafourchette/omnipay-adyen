@@ -15,8 +15,8 @@ use Omnipay\AdyenApi\Message\Payout\AbstractPayoutRequest;
  *  - iban
  *
  * Optionnal values :
- *  - countryCode
- *  - ownerName
+ *  - bankCountryCode
+ *  - ibanOwnerName
  */
 class Request extends AbstractPayoutRequest
 {
@@ -41,9 +41,9 @@ class Request extends AbstractPayoutRequest
     /**
      * @return string
      */
-    public function getCountryCode()
+    public function getBankCountryCode()
     {
-        return $this->getParameter('countryCode');
+        return $this->getParameter('bankCountryCode');
     }
 
     /**
@@ -51,9 +51,9 @@ class Request extends AbstractPayoutRequest
      *
      * @return $this
      */
-    public function setCountryCode($value)
+    public function setBankCountryCode($value)
     {
-        return $this->setParameter('countryCode', $value);
+        return $this->setParameter('bankCountryCode', $value);
     }
 
     /**
@@ -95,9 +95,9 @@ class Request extends AbstractPayoutRequest
     /**
      * @return string
      */
-    public function getOwnerName()
+    public function getIbanOwnerName()
     {
-        return $this->getParameter('ownerName');
+        return $this->getParameter('ibanOwnerName');
     }
 
     /**
@@ -105,9 +105,9 @@ class Request extends AbstractPayoutRequest
      *
      * @return Request
      */
-    public function setOwnerName($value)
+    public function setIbanOwnerName($value)
     {
-        return $this->setParameter('ownerName', $value);
+        return $this->setParameter('ibanOwnerName', $value);
     }
 
     /**
@@ -157,11 +157,11 @@ class Request extends AbstractPayoutRequest
         $this->validate('iban');
         $data = $this->appendParameter($data, 'bank', array('iban' => $this->getIban()));
 
-        if ($this->getOwnerName() !== null) {
-            $data = $this->appendParameter($data, 'bank', array('ownerName' => $this->getOwnerName()));
+        if ($this->getIbanOwnerName() !== null) {
+            $data = $this->appendParameter($data, 'bank', array('ownerName' => $this->getIbanOwnerName()));
         }
-        if ($this->getCountryCode() !== null) {
-            $data = $this->appendParameter($data, 'bank', array('countryCode' => $this->getCountryCode()));
+        if ($this->getBankCountryCode() !== null) {
+            $data = $this->appendParameter($data, 'bank', array('countryCode' => $this->getBankCountryCode()));
         }
 
         return $data;
