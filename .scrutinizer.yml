@@ -3,11 +3,16 @@ checks:
         code_rating: true
         duplication: true
 build_failure_conditions:
-    - 'issues.severity(>= MAJOR).new.exists'
-    - 'project.metric("scrutinizer.quality", < 9)'
     - 'project.metric_change("scrutinizer.quality", < -0.10)'
-    - 'project.metric("scrutinizer.test_coverage", < 1)'
-
+    - 'elements.rating(<= D).exists'               # No classes/methods with a rating of D or worse
+    - 'elements.rating(<= D).new.exists'           # No new classes/methods with a rating of D or worse allowed
+    - 'issues.label("coding-style").exists'        # No coding style issues allowed
+    - 'issues.label("coding-style").new.exists'    # No new coding style issues allowed
+    - 'issues.severity(>= MAJOR).new.exists'       # New issues of major or higher severity
+    - 'project.metric("scrutinizer.quality", < 9)' # Code Quality Rating drops below 9
+    - 'project.metric("scrutinizer.test_coverage", < 0.98)' # Code Coverage drops below 98%
+    # Code Coverage decreased from previous inspection by more than 2%
+    - 'project.metric_change("scrutinizer.test_coverage", < -0.02)'
 build:
     cache:
         directories:
@@ -33,6 +38,20 @@ build:
                     format: 'php-clover'
 
 tools:
+    php_analyzer:
+        enabled: true
+        config:
+            checkstyle:
+                enabled: true
+                naming:
+                    isser_method_name: ^.*$
+                    utility_class_name: ^.*$
+            doc_comment_fixes:
+                enabled: false
+            reflection_fixes:
+                enabled: false
+            use_statement_fixes:
+                enabled: false
     external_code_coverage: false
     php_code_coverage:      false
     php_code_sniffer:
@@ -40,12 +59,9 @@ tools:
             standard: 'PSR2'
     php_changetracking: true
     php_cpd: true
-    php_cs_fixer:
-        config:
-            level: 'all'
+    php_cs_fixer: false
     php_mess_detector: true
     php_pdepend: true
-    php_analyzer: true
     sensiolabs_security_checker: true
 
 filter:

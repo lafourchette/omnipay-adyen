@@ -101,8 +101,7 @@ abstract class AbstractApiRequest extends AbstractRequest
             // Adyen will return a 422 http code in case entity is invalid
             // but adyen still return some data (as errors for example)
             // Usefull for authorise call for example to catch invalid CVC or invalid card number
-            if (
-                $this->getHandleUnprocessableEntity()
+            if ($this->getHandleUnprocessableEntity()
                 && $e->getResponse()->getStatusCode() == HttpFoundationResponse::HTTP_UNPROCESSABLE_ENTITY
             ) {
                 return $e->getResponse();
