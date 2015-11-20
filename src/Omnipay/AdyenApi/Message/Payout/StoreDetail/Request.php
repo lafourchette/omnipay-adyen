@@ -67,7 +67,7 @@ class Request extends AbstractPayoutRequest
     /**
      * @param string $value
      *
-     * @return Request
+     * @return $this
      */
     public function setShopperEmail($value)
     {
@@ -85,7 +85,7 @@ class Request extends AbstractPayoutRequest
     /**
      * @param string $value
      *
-     * @return Request
+     * @return $this
      */
     public function setShopperReference($value)
     {
@@ -103,7 +103,7 @@ class Request extends AbstractPayoutRequest
     /**
      * @param string $value
      *
-     * @return Request
+     * @return $this
      */
     public function setIbanOwnerName($value)
     {
