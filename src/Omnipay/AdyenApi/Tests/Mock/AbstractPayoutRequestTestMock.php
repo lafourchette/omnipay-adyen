@@ -1,12 +1,12 @@
 <?php
 namespace Omnipay\AdyenApi\Tests\Mock;
 
-use Omnipay\AdyenApi\Message\Recurring\AbstractRecurringRequest;
+use Omnipay\AdyenApi\Message\Payout\AbstractPayoutRequest;
 
 /**
- * Class AbstractRecurringRequestTestMock
+ * Class AbstractPayoutRequestTestMock
  */
-class AbstractRecurringRequestTestMock extends AbstractRecurringRequest
+class AbstractPayoutRequestTestMock extends AbstractPayoutRequest
 {
     /**
      * {@inheritdoc}

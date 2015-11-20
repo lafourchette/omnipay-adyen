@@ -1,5 +1,5 @@
 <?php
-namespace Omnipay\AdyenApi\Message\Payment;
+namespace Omnipay\AdyenApi\Message\Payout;
 
 use Omnipay\AdyenApi\Message\AbstractApiRequest;
 

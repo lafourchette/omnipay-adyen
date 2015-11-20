@@ -1,7 +1,7 @@
 <?php
 namespace Omnipay\AdyenApi\Message\Payout\StoreDetail;
 
-use Omnipay\AdyenApi\Message\Payment\AbstractPayoutRequest;
+use Omnipay\AdyenApi\Message\Payout\AbstractPayoutRequest;
 
 /**
  * Adyen Payout store details Request
@@ -13,6 +13,10 @@ use Omnipay\AdyenApi\Message\Payment\AbstractPayoutRequest;
  *  - shopperEmail
  *  - shopperReference
  *  - iban
+ *
+ * Optionnal values :
+ *  - countryCode
+ *  - ownerName
  */
 class Request extends AbstractPayoutRequest
 {
@@ -130,17 +134,59 @@ class Request extends AbstractPayoutRequest
      */
     public function getData()
     {
-        return array(
-            'bank' => array(
-                'iban' => $this->getIban(),
-                'countryCode' => $this->getCountryCode(),
-                'ownerName' => $this->getOwnerName(),
-            ),
+        $this->validate('shopperEmail', 'shopperReference');
+
+        $data = array(
             'recurring' => array(
                 'contract' => 'PAYOUT',
             ),
             'shopperEmail' => $this->getShopperEmail(),
             'shopperReference' => $this->getShopperReference(),
         );
+
+        return $this->appendBankData($data);
+    }
+
+    /**
+     * @param array $data
+     *
+     * @return array
+     */
+    public function appendBankData(array $data)
+    {
+        $this->validate('iban');
+        $data = $this->appendParameter($data, 'bank', array('iban' => $this->getIban()));
+
+        if ($this->getOwnerName() !== null) {
+            $data = $this->appendParameter($data, 'bank', array('ownerName' => $this->getOwnerName()));
+        }
+        if ($this->getCountryCode() !== null) {
+            $data = $this->appendParameter($data, 'bank', array('countryCode' => $this->getCountryCode()));
+        }
+
+        return $data;
+    }
+
+    /**
+     * @param array  $container
+     * @param string $parameterName
+     * @param mixed  $parameterValue
+     *
+     * @return array
+     */
+    private function appendParameter(array $container, $parameterName, $parameterValue)
+    {
+        if (array_key_exists($parameterName, $container) && is_array($parameterValue)) {
+            $subContainer = $container[$parameterName];
+            foreach ($parameterValue as $subParameterName => $subParameterValue) {
+                $subContainer = $this->appendParameter($subContainer, $subParameterName, $subParameterValue);
+            }
+            $container[$parameterName] = $subContainer;
+
+            return $container;
+        }
+        $container[$parameterName] = $parameterValue;
+
+        return $container;
     }
 }
