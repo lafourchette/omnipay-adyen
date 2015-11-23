@@ -25,7 +25,6 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Omnipay\AdyenApi\Message\Payment\Refund\Response::getResponse
      */
     public function testGetter()
     {
