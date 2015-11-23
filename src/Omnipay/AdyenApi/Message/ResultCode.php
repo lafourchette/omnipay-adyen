@@ -15,4 +15,7 @@ class ResultCode
     const RECEIVED = 'Received';
     const REDIRECT_SHOPPER = 'RedirectShopper';
     const SUCCESS = 'Success';
+
+    //Payout
+    const PAYOUT_SUBMIT_RECEIVED = 'payout-submit-received';
 }
