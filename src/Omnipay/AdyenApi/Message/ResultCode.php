@@ -14,4 +14,5 @@ class ResultCode
     const CANCELLED = 'Cancelled';
     const RECEIVED = 'Received';
     const REDIRECT_SHOPPER = 'RedirectShopper';
+    const SUCCESS = 'Success';
 }
