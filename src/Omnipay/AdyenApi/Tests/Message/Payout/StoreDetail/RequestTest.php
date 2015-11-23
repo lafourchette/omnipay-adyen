@@ -1,11 +1,11 @@
 <?php
-namespace Omnipay\AdyenApi\Tests\Message\Payment\Refund;
+namespace Omnipay\AdyenApi\Tests\Message\Payout\StoreDetail;
 
 use Guzzle\Http\ClientInterface as HttpClient;
 use Guzzle\Http\Message\EntityEnclosingRequestInterface;
 use Guzzle\Http\Message\Response as GuzzleResponse;
-use Omnipay\AdyenApi\Message\Payment\Refund\Request;
-use Omnipay\AdyenApi\Message\Payment\Refund\Response;
+use Omnipay\AdyenApi\Message\Payout\StoreDetail\Request;
+use Omnipay\AdyenApi\Message\Payout\StoreDetail\Response;
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
 use Symfony\Component\HttpFoundation\Request as HttpRequest;
@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request as HttpRequest;
  */
 class RequestTest extends \PHPUnit_Framework_TestCase
 {
-    /** @var Request */
+    /** @var Request|ObjectProphecy */
     private $request;
 
     /** @var HttpClient|ObjectProphecy */
@@ -42,27 +42,61 @@ class RequestTest extends \PHPUnit_Framework_TestCase
 
     /**
      */
-    public function testGet()
+    public function testGetData()
     {
         $data = array(
-            'amountValue' => 10,
-            'amountCurrency' => 'CURRENCY',
-            'reference' => 'REFERENCE',
             'merchantAccount' => 'MERCHANT',
-            'originalReference' => 'ORIGINAL-REF',
+            'shopperReference' => 'REF',
+            'shopperEmail' => 'shopperEmail',
+            'iban' => 'iban',
         );
 
         $this->request->initialize($data);
 
         $this->assertEquals(
             array(
-                'modificationAmount' => array(
-                    'value' => $data['amountValue']*100,
-                    'currency' => $data['amountCurrency'],
+                'bank' => array(
+                    'iban' => $data['iban'],
                 ),
-                'reference' => $data['reference'],
+                'recurring' => array(
+                    'contract' => 'PAYOUT',
+                ),
+                'shopperEmail' => $data['shopperEmail'],
+                'shopperReference' => $data['shopperReference'],
                 'merchantAccount' => $data['merchantAccount'],
-                'originalReference' => $data['originalReference'],
+            ),
+            $this->request->getData()
+        );
+    }
+
+    /**
+     */
+    public function testGetDataWithAllData()
+    {
+        $data = array(
+            'merchantAccount' => 'MERCHANT',
+            'shopperReference' => 'REF',
+            'shopperEmail' => 'shopperEmail',
+            'iban' => 'iban',
+            'ibanOwnerName' => 'ibanOwnerName',
+            'bankCountryCode' => 'bankCountryCode',
+        );
+
+        $this->request->initialize($data);
+
+        $this->assertEquals(
+            array(
+                'bank' => array(
+                    'iban' => $data['iban'],
+                    'countryCode' => $data['bankCountryCode'],
+                    'ownerName' => $data['ibanOwnerName'],
+                ),
+                'recurring' => array(
+                    'contract' => 'PAYOUT',
+                ),
+                'shopperEmail' => $data['shopperEmail'],
+                'shopperReference' => $data['shopperReference'],
+                'merchantAccount' => $data['merchantAccount'],
             ),
             $this->request->getData()
         );
@@ -99,16 +133,16 @@ class RequestTest extends \PHPUnit_Framework_TestCase
         $this->request->initialize(array(
             'apiUser' => 'USER',
             'apiPassword' => 'PASSWORD',
-            'amountCurrency' => 'CURRENCY',
-            'reference' => 'REFERENCE',
             'merchantAccount' => 'MERCHANT',
-            'originalReference' => 'ORIGINAL-REF',
+            'shopperReference' => 'REF',
+            'shopperEmail' => 'shopperEmail',
+            'iban' => 'iban',
         ));
 
         /** @var Response $response */
         $response = $this->request->sendData(array());
         $this->assertInstanceOf(
-            'Omnipay\AdyenApi\Message\Payment\Refund\Response',
+            'Omnipay\AdyenApi\Message\Payout\StoreDetail\Response',
             $response
         );
 
@@ -123,7 +157,6 @@ class RequestTest extends \PHPUnit_Framework_TestCase
      *
      * @param string $parameterName
      * @param mixed  $parameterValue
-     *
      */
     public function testParametersGetAfterInitialize($parameterName, $parameterValue)
     {
@@ -147,7 +180,6 @@ class RequestTest extends \PHPUnit_Framework_TestCase
      *
      * @param string $parameterName
      * @param mixed  $parameterValue
-     *
      */
     public function testParametersSetGet($parameterName, $parameterValue)
     {
@@ -175,7 +207,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
     public function testGetMethodName()
     {
         $this->assertSame(
-            'refund',
+            'storeDetail',
             $this->request->getMethodName()
         );
     }
@@ -186,10 +218,12 @@ class RequestTest extends \PHPUnit_Framework_TestCase
     public function getParameters()
     {
         return array(
-            'AMOUNT_VALUE' => array('amountValue', 'MyAmountValue'),
-            'AMOUNT_CURRENCY' => array('amountCurrency', 'MyAmountCurrency'),
-            'REFERENCE' => array('reference', 'MyReference'),
-            'ORIGINAL_REF' => array('originalReference', 'MyOriginalReference'),
+            'MERCHANT_ACCOUNT' => array('merchantAccount', 'MyMerchantAccount'),
+            'SHOPPER_REFERENCE' => array('shopperReference', 'MyShopperReference'),
+            'SHOPPER_EMAIL' => array('shopperEmail', 'MyShopperEmail'),
+            'IBAN' => array('iban', 'MyIban'),
+            'BANK_COUNTRY_CODE' => array('bankCountryCode', 'MyCountryCode'),
+            'IBAN_OWNER_NAME' => array('ibanOwnerName', 'Toto'),
         );
     }
 }

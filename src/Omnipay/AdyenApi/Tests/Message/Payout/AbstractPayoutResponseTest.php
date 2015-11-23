@@ -1,14 +1,14 @@
 <?php
-namespace Omnipay\AdyenApi\Tests\Message\Payment;
+namespace Omnipay\AdyenApi\Tests\Message\Payout;
 
-use Omnipay\AdyenApi\Tests\Mock\AbstractPaymentResponseTestMock;
+use Omnipay\AdyenApi\Tests\Mock\AbstractPayoutResponseTestMock;
 use Omnipay\Common\Message\RequestInterface;
 use Prophecy\Prophecy\ObjectProphecy;
 
 /**
- * Class AbstractPaymentRequestTest
+ * Class AbstractPayoutResponseTest
  */
-class AbstractPaymentResponseTest extends \PHPUnit_Framework_TestCase
+class AbstractPayoutResponseTest extends \PHPUnit_Framework_TestCase
 {
     /** @var RequestInterface|ObjectProphecy */
     private $request;
@@ -34,12 +34,11 @@ class AbstractPaymentResponseTest extends \PHPUnit_Framework_TestCase
             'message' => 'message',
             'errorType' => 'errorType',
         );
-        $response = new AbstractPaymentResponseTestMock(
+        $response = new AbstractPayoutResponseTestMock(
             $this->request->reveal(),
             json_encode($data)
         );
 
-        $this->assertSame($data['pspReference'], $response->getPspReference());
         $this->assertSame($data['pspReference'], $response->getTransactionReference());
         $this->assertSame($data['status'], $response->getStatus());
         $this->assertSame($data['errorCode'], $response->getErrorCode());

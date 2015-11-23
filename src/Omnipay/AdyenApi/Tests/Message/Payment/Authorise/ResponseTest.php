@@ -25,9 +25,6 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Response::getResultCode
-     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Response::getAuthCode
-     * @covers Omnipay\AdyenApi\Message\Payment\Authorise\Response::getRefusalReason
      */
     public function testGetter()
     {
