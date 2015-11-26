@@ -8,6 +8,8 @@ use Omnipay\AdyenApi\Message\Payment\CancelOrRefund\Request as CancelOrRefundReq
 use Omnipay\AdyenApi\Message\Payment\Refund\Request as RefundRequest;
 use Omnipay\AdyenApi\Message\Payout\StoreDetail\Request as StorePayoutDetailRequest;
 use Omnipay\AdyenApi\Message\Payout\Submit\Request as SubmitPayoutRequest;
+use Omnipay\AdyenApi\Message\Payout\Confirm\Request as ConfirmPayoutRequest;
+use Omnipay\AdyenApi\Message\Payout\Decline\Request as DeclinePayoutRequest;
 use Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Request as ListRecurringDetailsRequest;
 use Prophecy\Prophecy\ObjectProphecy;
 use Symfony\Component\HttpFoundation\Request as HttpRequest;
@@ -306,6 +308,70 @@ class GatewayTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf(
             'Omnipay\\AdyenApi\\Message\\Payout\\Submit\\Request',
+            $request
+        );
+
+        $this->assertSame(
+            $parameters['apiUser'],
+            $request->getApiUser()
+        );
+        $this->assertSame(
+            $parameters['apiPassword'],
+            $request->getApiPassword()
+        );
+        $this->assertSame(
+            $defaultParameters['merchantAccount'],
+            $request->getMerchantAccount()
+        );
+    }
+
+    /**
+     */
+    public function testConfirmPayout()
+    {
+        $parameters = array(
+            'apiUser' => 'myApiUser2',
+            'apiPassword' => 'myApiPassword2',
+        );
+        $defaultParameters = $this->gateway->getDefaultParameters();
+
+        /** @var ConfirmPayoutRequest $request */
+        $request = $this->gateway->confirmPayout($parameters);
+
+        $this->assertInstanceOf(
+            'Omnipay\\AdyenApi\\Message\\Payout\\Confirm\\Request',
+            $request
+        );
+
+        $this->assertSame(
+            $parameters['apiUser'],
+            $request->getApiUser()
+        );
+        $this->assertSame(
+            $parameters['apiPassword'],
+            $request->getApiPassword()
+        );
+        $this->assertSame(
+            $defaultParameters['merchantAccount'],
+            $request->getMerchantAccount()
+        );
+    }
+
+    /**
+     */
+    public function testDeclinePayout()
+    {
+        $parameters = array(
+            'apiUser' => 'myApiUser2',
+            'apiPassword' => 'myApiPassword2',
+        );
+        $defaultParameters = $this->gateway->getDefaultParameters();
+
+        /** @var DeclinePayoutRequest $request */
+        $request = $this->gateway->declinePayout($parameters);
+
+        $this->assertInstanceOf(
+            'Omnipay\\AdyenApi\\Message\\Payout\\Decline\\Request',
             $request
         );
 
