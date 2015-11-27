@@ -3,6 +3,7 @@ namespace Omnipay\AdyenApi\Message\Payout\Decline;
 
 use Omnipay\AdyenApi\Message\Payout\Confirm\Response as ConfirmResponse;
 use Omnipay\AdyenApi\Message\Payout\ResponseCode;
+use Omnipay\AdyenApi\Message\Payout\ReviewPayoutResponseInterface;
 
 /**
  * Adyen Payout confirm Response.
@@ -10,7 +11,7 @@ use Omnipay\AdyenApi\Message\Payout\ResponseCode;
  * Provide getter for :
  *  - response
  */
-class Response extends ConfirmResponse
+class Response extends ConfirmResponse implements ReviewPayoutResponseInterface
 {
     /**
      * {@inheritdoc}

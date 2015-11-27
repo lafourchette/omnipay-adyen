@@ -26,5 +26,5 @@ class ResultCode
     const SUCCESS = 'Success';
     //@see https://docs.adyen.com/display/DODL/Submit+payout+response
     //@see https://docs.adyen.com/display/DODL/Store+detail+and+submit+response
-    const PAYOUT_SUBMIT_RECEIVED = 'payout-submit-received';
+    const PAYOUT_SUBMIT_RECEIVED = '[payout-submit-received]';
 }
