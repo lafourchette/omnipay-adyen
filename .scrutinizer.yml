@@ -67,8 +67,8 @@ tools:
 filter:
     paths:
         - src/*
-    excluded_paths:
-        - src/*/*/Tests/*
+#    excluded_paths:
+#        - src/*/*/Tests/*
 
 coding_style:
     php:
