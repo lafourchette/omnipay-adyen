@@ -1,9 +1,9 @@
 <?php
-namespace Omnipay\AdyenApi\Tests\Message\Payout\StoreDetail;
+namespace Omnipay\AdyenApi\Tests\Message\Payout\Confirm;
 
-use Omnipay\AdyenApi\Message\Payout\StoreDetail\Request;
-use Omnipay\AdyenApi\Message\Payout\StoreDetail\Response;
-use Omnipay\AdyenApi\Message\ResultCode;
+use Omnipay\AdyenApi\Message\Payout\Confirm\Request;
+use Omnipay\AdyenApi\Message\Payout\Confirm\Response;
+use Omnipay\AdyenApi\Message\Payout\ResponseCode;
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
 
@@ -29,8 +29,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     {
         $data = array(
             'pspReference' => 'pspReference',
-            'recurringDetailReference' => 'recurringDetailReference',
-            'resultCode' => 'resultCode',
+            'response' => 'response',
         );
         $response = new Response(
             $this->request->reveal(),
@@ -42,15 +41,11 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
             $response->getTransactionReference(),
             'pspReference mismatch'
         );
+
         $this->assertSame(
-            $data['recurringDetailReference'],
-            $response->getRecurringDetailReference(),
-            'recurringDetailReference mismatch'
-        );
-        $this->assertSame(
-            $data['resultCode'],
-            $response->getResultCode(),
-            'resultCode mismatch'
+            $data['response'],
+            $response->getResponse(),
+            'response mismatch'
         );
     }
 
@@ -80,13 +75,13 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
         return array(
             'OK' => array(
                 array(
-                    'resultCode' => ResultCode::SUCCESS,
+                    'response' => ResponseCode::PAYOUT_CONFIRM_RECEIVED,
                 ),
                 true,
             ),
             'KO - refused' => array(
                 array(
-                    'resultCode' => ResultCode::ERROR,
+                    'response' => 'Plop',
                 ),
                 false,
             ),
