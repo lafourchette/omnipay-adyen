@@ -24,14 +24,6 @@ use Omnipay\AdyenApi\Message\Payment\AbstractPaymentRequest;
  */
 class Request extends AbstractPaymentRequest
 {
-    const RECURRING_CONTRACT_TYPE_ONECLICK = 'ONECLICK';
-    const RECURRING_CONTRACT_TYPE_RECURRING = 'RECURRING';
-    const RECURRING_CONTRACT_TYPE_PAYOUT = 'PAYOUT';
-
-    const SHOPPER_INTERACTION_ECOMMERCE = 'Ecommerce';
-    const SHOPPER_INTERACTION_CONTAUTH = 'ContAuth';
-    const SHOPPER_INTERACTION_MOTO = 'Moto';
-
     /**
      * @return string
      */
