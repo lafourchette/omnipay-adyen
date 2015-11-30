@@ -26,8 +26,6 @@ class AbstractPayoutRequestTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        parent::setUp();
-
         $this->httpClient = $this->prophesize('Guzzle\Http\ClientInterface');
         $this->httpRequest = $this->prophesize('Symfony\Component\HttpFoundation\Request');
         $this->abstractPayoutRequest = new AbstractPayoutRequestTestMock(

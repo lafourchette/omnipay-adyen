@@ -6,6 +6,8 @@ use Omnipay\AdyenApi\Message\Payment\CancelOrRefund\Request as CancelOrRefundReq
 use Omnipay\AdyenApi\Message\Payment\Refund\Request as RefundRequest;
 use Omnipay\AdyenApi\Message\Payout\StoreDetail\Request as StorePayoutDetailRequest;
 use Omnipay\AdyenApi\Message\Payout\Submit\Request as SubmitPayoutRequest;
+use Omnipay\AdyenApi\Message\Payout\Confirm\Request as ConfirmPayoutRequest;
+use Omnipay\AdyenApi\Message\Payout\Decline\Request as DeclinePayoutRequest;
 use Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Request as ListRecurringDetailsRequest;
 use Omnipay\Common\AbstractGateway;
 
@@ -149,5 +151,25 @@ class Gateway extends AbstractGateway
     public function submitPayout(array $parameters = array())
     {
         return $this->createRequest('Omnipay\AdyenApi\Message\Payout\Submit\Request', $parameters);
+    }
+
+    /**
+     * @param array $parameters
+     *
+     * @return ConfirmPayoutRequest
+     */
+    public function confirmPayout(array $parameters = array())
+    {
+        return $this->createRequest('Omnipay\AdyenApi\Message\Payout\Confirm\Request', $parameters);
+    }
+
+    /**
+     * @param array $parameters
+     *
+     * @return DeclinePayoutRequest
+     */
+    public function declinePayout(array $parameters = array())
+    {
+        return $this->createRequest('Omnipay\AdyenApi\Message\Payout\Decline\Request', $parameters);
     }
 }
