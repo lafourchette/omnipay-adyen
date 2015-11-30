@@ -1,11 +1,11 @@
 <?php
-namespace Omnipay\AdyenApi\Tests\Message\Payout\Submit;
+namespace Omnipay\AdyenApi\Tests\Message\Payout\Decline;
 
 use Guzzle\Http\ClientInterface as HttpClient;
 use Guzzle\Http\Message\EntityEnclosingRequestInterface;
 use Guzzle\Http\Message\Response as GuzzleResponse;
-use Omnipay\AdyenApi\Message\Payout\Submit\Request;
-use Omnipay\AdyenApi\Message\Payout\Submit\Response;
+use Omnipay\AdyenApi\Message\Payout\Decline\Request;
+use Omnipay\AdyenApi\Message\Payout\Decline\Response;
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
 use Symfony\Component\HttpFoundation\Request as HttpRequest;
@@ -44,67 +44,15 @@ class RequestTest extends \PHPUnit_Framework_TestCase
     {
         $data = array(
             'merchantAccount' => 'MERCHANT',
-            'amountCurrency' => 'MyAmountCurrency',
-            'amountValue' => 12.5,
-            'reference' => 'MyReference',
-            'shopperEmail' => 'MyShopperEmail',
-            'shopperReference' => 'MyShopperReference',
-            'selectedRecurringDetailReference' => 'MySelectedRecurringDetailReference',
+            'originalReference' => 'MyReference',
         );
 
         $this->request->initialize($data);
 
         $this->assertEquals(
             array(
-                'amount' => array(
-                    'currency' => $data['amountCurrency'],
-                    'value' => ($data['amountValue'] * 100),
-                ),
-                'recurring' => array(
-                    'contract' => 'PAYOUT',
-                ),
-                'reference' => $data['reference'],
-                'shopperEmail' => $data['shopperEmail'],
-                'selectedRecurringDetailReference' => $data['selectedRecurringDetailReference'],
-                'shopperReference' => $data['shopperReference'],
+                'originalReference' => $data['originalReference'],
                 'merchantAccount' => $data['merchantAccount'],
-            ),
-            $this->request->getData()
-        );
-    }
-
-    /**
-     */
-    public function testGetDataWithAllData()
-    {
-        $data = array(
-            'merchantAccount' => 'MERCHANT',
-            'amountCurrency' => 'MyAmountCurrency',
-            'amountValue' => 12.5,
-            'reference' => 'MyReference',
-            'shopperEmail' => 'MyShopperEmail',
-            'shopperReference' => 'MyShopperReference',
-            'selectedRecurringDetailReference' => 'MySelectedRecurringDetailReference',
-            'shopperStatement' => 'MyShopperStatement',
-        );
-
-        $this->request->initialize($data);
-
-        $this->assertEquals(
-            array(
-                'amount' => array(
-                    'currency' => $data['amountCurrency'],
-                    'value' => ($data['amountValue'] * 100),
-                ),
-                'recurring' => array(
-                    'contract' => 'PAYOUT',
-                ),
-                'reference' => $data['reference'],
-                'shopperEmail' => $data['shopperEmail'],
-                'selectedRecurringDetailReference' => $data['selectedRecurringDetailReference'],
-                'shopperReference' => $data['shopperReference'],
-                'merchantAccount' => $data['merchantAccount'],
-                'shopperStatement' => $data['shopperStatement'],
             ),
             $this->request->getData()
         );
@@ -142,18 +90,13 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             'apiUser' => 'USER',
             'apiPassword' => 'PASSWORD',
             'merchantAccount' => 'MERCHANT',
-            'amountCurrency' => 'MyAmountCurrency',
-            'amountValue' => 12.5,
-            'reference' => 'MyReference',
-            'shopperEmail' => 'MyShopperEmail',
-            'shopperReference' => 'MyShopperReference',
-            'selectedRecurringDetailReference' => 'MySelectedRecurringDetailReference',
+            'originalReference' => 'MyReference',
         ));
 
         /** @var Response $response */
         $response = $this->request->sendData(array());
         $this->assertInstanceOf(
-            'Omnipay\AdyenApi\Message\Payout\Submit\Response',
+            'Omnipay\AdyenApi\Message\Payout\Decline\Response',
             $response
         );
 
@@ -218,7 +161,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
     public function testGetMethodName()
     {
         $this->assertSame(
-            'submit',
+            'decline',
             $this->request->getMethodName()
         );
     }
@@ -230,13 +173,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             'MERCHANT_ACCOUNT' => array('merchantAccount', 'MyMerchantAccount'),
-            'SHOPPER_REFERENCE' => array('shopperReference', 'MyShopperReference'),
-            'SHOPPER_EMAIL' => array('shopperEmail', 'MyShopperEmail'),
-            'REFERENCE' => array('reference', 'MyReference'),
-            'AMOUNT_CURRENCY' => array('amountCurrency', 'MyAmountCurrency'),
-            'AMOUNT_VALUE' => array('amountValue', 'MyAmountValue'),
-            'SELECTED_RECURRING_DETAIL_REF' => array('selectedRecurringDetailReference', 'LKJLSDKJ'),
-            'SHOPPER_STATEMENT' => array('shopperStatement', 'MyShopperStatement'),
+            'ORIGINAL_REFERENCE' => array('originalReference', 'MyReference'),
         );
     }
 }
