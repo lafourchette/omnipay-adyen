@@ -1,6 +1,11 @@
 language: php
 php:
   - 5.4
+  - 5.5
+env:
+  - SYMFONY_VERSION="2.1.*"
+  - SYMFONY_VERSION="2.3.*"
+  - SYMFONY_VERSION="2.7.*"
 cache:
   directories:
     - vendor
@@ -10,6 +15,7 @@ services:
 install:
   - pyrus install pear/PHP_CodeSniffer
   - phpenv rehash
+  - composer require symfony/framework-bundle:${SYMFONY_VERSION}
   - composer install --no-interaction
 script:
   - phpcs
