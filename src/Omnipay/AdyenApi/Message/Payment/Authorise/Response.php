@@ -2,6 +2,7 @@
 namespace Omnipay\AdyenApi\Message\Payment\Authorise;
 
 use Omnipay\AdyenApi\Message\Payment\AbstractPaymentResponse;
+use Omnipay\AdyenApi\Message\ResultCode;
 
 /**
  * Adyen Authorise Response.
@@ -9,13 +10,12 @@ use Omnipay\AdyenApi\Message\Payment\AbstractPaymentResponse;
  */
 class Response extends AbstractPaymentResponse
 {
-    const STATUS_AUTHORISED = 'Authorised';
     /**
      * {@inheritdoc}
      */
     public function isSuccessful()
     {
-        return $this->getResultCode() == self::STATUS_AUTHORISED;
+        return $this->getResultCode() == ResultCode::AUTHORISED;
     }
 
     /**

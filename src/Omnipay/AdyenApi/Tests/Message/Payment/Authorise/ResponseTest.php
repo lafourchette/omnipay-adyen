@@ -3,6 +3,7 @@ namespace Omnipay\AdyenApi\Tests\Message\Payment\Authorise;
 
 use Omnipay\AdyenApi\Message\Payment\Authorise\Request;
 use Omnipay\AdyenApi\Message\Payment\Authorise\Response;
+use Omnipay\AdyenApi\Message\ResultCode;
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
 
@@ -47,7 +48,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     {
         $response = new Response(
             $this->request->reveal(),
-            json_encode(array('resultCode' => Response::STATUS_AUTHORISED))
+            json_encode(array('resultCode' => ResultCode::AUTHORISED))
         );
 
         $this->assertTrue($response->isSuccessful());
