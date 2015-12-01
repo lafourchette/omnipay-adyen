@@ -1,0 +1,17 @@
+language: php
+php:
+  - 5.4
+cache:
+  directories:
+    - vendor
+    - bin
+services:
+  - mysql
+install:
+  - pyrus install pear/PHP_CodeSniffer
+  - phpenv rehash
+  - composer install --no-interaction
+script:
+  - phpcs
+  - ./bin/phpunit
+
