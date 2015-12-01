@@ -15,7 +15,7 @@ services:
 install:
   - pyrus install pear/PHP_CodeSniffer
   - phpenv rehash
-  - composer require symfony/framework-bundle:${SYMFONY_VERSION}
+  - composer require symfony/http-foundation:${SYMFONY_VERSION}
   - composer install --no-interaction
 script:
   - phpcs
