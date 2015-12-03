@@ -1,4 +1,6 @@
 # omnipay-adyen
+[![Travis Build Status](https://travis-ci.org/lafourchette/omnipay-adyen.svg)](https://travis-ci.org/lafourchette/omnipay-adyen)
+
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/lafourchette/omnipay-adyen/badges/quality-score.png?b=master&s=45c5356bcbdefd71fcbfc59668842240563e3747)](https://scrutinizer-ci.com/g/lafourchette/omnipay-adyen/?branch=master) [![Code Coverage](https://scrutinizer-ci.com/g/lafourchette/omnipay-adyen/badges/coverage.png?b=master&s=1ba9f4bd0ac1b281729cb3ea2c903890ab49f004)](https://scrutinizer-ci.com/g/lafourchette/omnipay-adyen/?branch=master) [![Build Status](https://scrutinizer-ci.com/g/lafourchette/omnipay-adyen/badges/build.png?b=master&s=12b6857041510063fbae1c94e401a3c4bcc5c794)](https://scrutinizer-ci.com/g/lafourchette/omnipay-adyen/build-status/master)
 
 Adyen implementation of omnipay interface
