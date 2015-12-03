@@ -146,7 +146,7 @@ class AbstractApiGatewayTest extends \PHPUnit_Framework_TestCase
         );
         $this->assertCount(
             0,
-            $missingParameters,
+            $extraParameters,
             sprintf(
                 'Extra parameters found on request : %s',
                 implode(', ', array_keys($extraParameters))
@@ -170,11 +170,13 @@ class AbstractApiGatewayTest extends \PHPUnit_Framework_TestCase
         $gatewayParameters = $this->gateway->getParameters();
         $requestParameters = $request->getParameters();
 
+        $expectedParameters = array_replace($gatewayParameters, $customParamList);
+
         $missingParameters = array_diff_key(
-            array_replace($gatewayParameters, $customParamList),
+            $expectedParameters,
             $requestParameters
         );
-        $extraParameters = array_diff_key($requestParameters, $gatewayParameters, $customParamList);
+        $extraParameters = array_diff_key($requestParameters, $expectedParameters);
 
         $this->assertCount(
             0,
@@ -186,14 +188,14 @@ class AbstractApiGatewayTest extends \PHPUnit_Framework_TestCase
         );
         $this->assertCount(
             0,
-            $missingParameters,
+            $extraParameters,
             sprintf(
                 'Extra parameters found on request : %s',
                 implode(', ', array_keys($extraParameters))
             )
         );
 
-        foreach ($customParamList as $key => $value) {
+        foreach ($expectedParameters as $key => $value) {
             $this->assertSame(
                 $value,
                 $requestParameters[$key],
