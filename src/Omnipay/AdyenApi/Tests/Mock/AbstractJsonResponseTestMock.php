@@ -4,7 +4,7 @@ namespace Omnipay\AdyenApi\Tests\Mock;
 use Omnipay\AdyenApi\Message\AbstractJsonResponse;
 
 /**
- * Class AbstractJsonResponseTest_Mock
+ * Class AbstractJsonResponseTestMock
  */
 class AbstractJsonResponseTestMock extends AbstractJsonResponse
 {
