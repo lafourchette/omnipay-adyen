@@ -1,0 +1,21 @@
+language: php
+php:
+  - 5.4
+  - 5.5
+env:
+  - SYMFONY_VERSION="2.4.*"
+  - SYMFONY_VERSION="2.7.*"
+cache:
+  directories:
+    - bin
+services:
+  - mysql
+install:
+  - pyrus install pear/PHP_CodeSniffer
+  - phpenv rehash
+  - composer require symfony/http-foundation:${SYMFONY_VERSION}
+  - composer install --no-interaction
+script:
+  - phpcs
+  - ./bin/phpunit
+

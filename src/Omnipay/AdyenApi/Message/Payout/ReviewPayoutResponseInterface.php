@@ -1,9 +1,6 @@
 <?php
 namespace Omnipay\AdyenApi\Message\Payout;
 
-use Omnipay\AdyenApi\Message\Payout\AbstractPayoutResponse;
-use Omnipay\AdyenApi\Message\Payout\ResponseCode;
-
 /**
  * Interface ReviewPayoutResponseInterface
  */

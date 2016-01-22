@@ -7,8 +7,10 @@
         "gateway",
         "merchant",
         "omnipay",
-        "pay",
-        "payment"
+        "payment",
+        "payout",
+        "recurring",
+        "payin"
     ],
     "homepage": "https://github.com/lafourchette/omnipay-adyen",
     "license": "MIT",

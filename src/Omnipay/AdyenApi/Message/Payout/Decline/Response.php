@@ -2,8 +2,8 @@
 namespace Omnipay\AdyenApi\Message\Payout\Decline;
 
 use Omnipay\AdyenApi\Message\Payout\Confirm\Response as ConfirmResponse;
-use Omnipay\AdyenApi\Message\Payout\ResponseCode;
 use Omnipay\AdyenApi\Message\Payout\ReviewPayoutResponseInterface;
+use Omnipay\AdyenApi\Message\ResponseCode;
 
 /**
  * Adyen Payout confirm Response.

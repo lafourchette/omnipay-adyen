@@ -3,6 +3,7 @@ namespace Omnipay\AdyenApi\Tests\Message\Payment\Refund;
 
 use Omnipay\AdyenApi\Message\Payment\Refund\Request;
 use Omnipay\AdyenApi\Message\Payment\Refund\Response;
+use Omnipay\AdyenApi\Message\ResponseCode;
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
 
@@ -43,7 +44,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     {
         $response = new Response(
             $this->request->reveal(),
-            json_encode(array('response' => Response::RESPONSE_RECEIVED))
+            json_encode(array('response' => ResponseCode::REFUND_RECEIVED))
         );
 
         $this->assertTrue($response->isSuccessful());

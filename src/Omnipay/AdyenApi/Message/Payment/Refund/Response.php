@@ -2,6 +2,7 @@
 namespace Omnipay\AdyenApi\Message\Payment\Refund;
 
 use Omnipay\AdyenApi\Message\Payment\AbstractPaymentResponse;
+use Omnipay\AdyenApi\Message\ResponseCode;
 
 /**
  * Adyen Refund Response.
@@ -9,14 +10,12 @@ use Omnipay\AdyenApi\Message\Payment\AbstractPaymentResponse;
  */
 class Response extends AbstractPaymentResponse
 {
-    const RESPONSE_RECEIVED = '[refund-received]';
-
     /**
      * {@inheritdoc}
      */
     public function isSuccessful()
     {
-        return $this->getResponse() == self::RESPONSE_RECEIVED;
+        return $this->getResponse() == ResponseCode::REFUND_RECEIVED;
     }
 
     /**
