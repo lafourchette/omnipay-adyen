@@ -3,7 +3,7 @@ namespace Omnipay\AdyenApi\Tests\Message\Payout\Decline;
 
 use Omnipay\AdyenApi\Message\Payout\Decline\Request;
 use Omnipay\AdyenApi\Message\Payout\Decline\Response;
-use Omnipay\AdyenApi\Message\Payout\ResponseCode;
+use Omnipay\AdyenApi\Message\ResponseCode;
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
 
