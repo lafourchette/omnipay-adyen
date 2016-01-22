@@ -25,9 +25,9 @@ build:
     environment:
         rabbitmq: false
         php:
-            version: 5.4.41 # But we use 5.3.10 :/
+            version: 5.4.41
             ini:
-                'error_reporting': 22527 #Dev value
+                'error_reporting': 22527
     tests:
         override:
             -

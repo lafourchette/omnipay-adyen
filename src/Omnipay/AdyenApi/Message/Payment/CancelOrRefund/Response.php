@@ -2,6 +2,7 @@
 namespace Omnipay\AdyenApi\Message\Payment\CancelOrRefund;
 
 use Omnipay\AdyenApi\Message\Payment\Refund\Response as RefundResponse;
+use Omnipay\AdyenApi\Message\ResponseCode;
 
 /**
  * Adyen CancelOrRefund Response.
@@ -11,13 +12,11 @@ use Omnipay\AdyenApi\Message\Payment\Refund\Response as RefundResponse;
  */
 class Response extends RefundResponse
 {
-    const RESPONSE_RECEIVED = '[captureOrRefund-received]';
-
     /**
      * {@inheritdoc}
      */
     public function isSuccessful()
     {
-        return $this->getResponse() == self::RESPONSE_RECEIVED;
+        return $this->getResponse() == ResponseCode::CANCEL_OR_REFUND_RECEIVED;
     }
 }
