@@ -3,7 +3,6 @@ namespace Omnipay\AdyenApi;
 
 use Omnipay\AdyenApi\Message\Payout\Confirm\Request as ConfirmPayoutRequest;
 use Omnipay\AdyenApi\Message\Payout\Decline\Request as DeclinePayoutRequest;
-use Omnipay\Common\AbstractGateway;
 
 /**
  * Review Payout Api Gateway
@@ -12,7 +11,7 @@ use Omnipay\Common\AbstractGateway;
  *  - confirm
  *  - decline
  */
-class ReviewPayoutApiGateway extends AbstractGateway
+class ReviewPayoutApiGateway extends AbstractApiGateway
 {
     /**
      * {@inheritdoc}
