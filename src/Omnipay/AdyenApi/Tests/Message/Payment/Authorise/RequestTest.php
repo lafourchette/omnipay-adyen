@@ -155,6 +155,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             'shopperReference' => 'ShopperReference',
             'shopperEmail' => 'ShopperEmail',
             'shopperInteraction' => 'ShopperInteraction',
+            'shopperStatement' => 'ShopperStatement',
         );
 
         $this->request->initialize($data);
@@ -173,6 +174,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
                 'shopperReference' => $data['shopperReference'],
                 'shopperEmail' => $data['shopperEmail'],
                 'shopperInteraction' => $data['shopperInteraction'],
+                'shopperStatement' => $data['shopperStatement'],
             ),
             $this->request->getData()
         );
@@ -358,6 +360,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             'SHOPPER_EMAIL' => array('shopperEmail', 'MyShopperEmail'),
             'SELECTED_RECURRING_DETAIL_REFERENCE' => array('selectedRecurringDetailReference', 'MySelectedRecurringDetailReference'),
             'SHOPPER_INTERACTION' => array('shopperInteraction', 'MyShopperInteraction'),
+            'SHOPPER_STATEMENT' => array('shopperStatement', 'MyShopperStatement'),
         );
     }
 }

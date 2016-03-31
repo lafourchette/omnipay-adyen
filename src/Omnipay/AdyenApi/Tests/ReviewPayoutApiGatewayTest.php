@@ -2,15 +2,8 @@
 namespace Omnipay\AdyenApi\Tests;
 
 use Guzzle\Http\ClientInterface as HttpClient;
-use Omnipay\AdyenApi\Gateway;
-use Omnipay\AdyenApi\Message\Payment\Authorise\Request as AuthorizeRequest;
-use Omnipay\AdyenApi\Message\Payment\CancelOrRefund\Request as CancelOrRefundRequest;
-use Omnipay\AdyenApi\Message\Payment\Refund\Request as RefundRequest;
-use Omnipay\AdyenApi\Message\Payout\StoreDetail\Request as StorePayoutDetailRequest;
-use Omnipay\AdyenApi\Message\Payout\Submit\Request as SubmitPayoutRequest;
 use Omnipay\AdyenApi\Message\Payout\Confirm\Request as ConfirmPayoutRequest;
 use Omnipay\AdyenApi\Message\Payout\Decline\Request as DeclinePayoutRequest;
-use Omnipay\AdyenApi\Message\Recurring\ListRecurringDetails\Request as ListRecurringDetailsRequest;
 use Omnipay\AdyenApi\ReviewPayoutApiGateway;
 use Prophecy\Prophecy\ObjectProphecy;
 use Symfony\Component\HttpFoundation\Request as HttpRequest;
