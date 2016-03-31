@@ -17,7 +17,10 @@ composer require lafourchette/omnipay-adyen
 
 The following gateways are provided by this package:
 
-* AdyenApi
+* [AdyenPaymentApi](https://github.com/lafourchette/omnipay-adyen/blob/master/src/Omnipay/AdyenApi/PaymentApiGateway.php) : Api calls related to **payment** (`authorize`, `refund` and `cancelOrRefund`)
+* [AdyenRecurringApi](https://github.com/lafourchette/omnipay-adyen/blob/master/src/Omnipay/AdyenApi/RecurringApiGateway.php) : Api calls related to **recurring contract** (`listRecurringDetails`)
+* [AdyenReviewPayoutApi](https://github.com/lafourchette/omnipay-adyen/blob/master/src/Omnipay/AdyenApi/ReviewPayoutApiGateway.php) : Api calls related to **payout review** (`confirm` and `decline`)
+* [AdyenStorePayoutApi](https://github.com/lafourchette/omnipay-adyen/blob/master/src/Omnipay/AdyenApi/StorePayoutApiGateway.php) : Api calls related to **payout details storage** (`storeDetails` and `submit`)
 
 For general usage instructions, please see the main [Omnipay](https://github.com/omnipay/omnipay)
 repository.
