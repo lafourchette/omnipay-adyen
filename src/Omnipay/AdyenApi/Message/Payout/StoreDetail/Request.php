@@ -175,8 +175,10 @@ class Request extends AbstractPayoutRequest
     {
         $this->validate('iban');
         $data = $this->appendParameter($data, 'bank', array('iban' => $this->getIban()));
-        $data = $this->appendParameter($data, 'bank', array('bic' => $this->getBic()));
 
+        if ($this->getBic() !== null) {
+            $data = $this->appendParameter($data, 'bank', array('bic' => $this->getBic()));
+        }
         if ($this->getIbanOwnerName() !== null) {
             $data = $this->appendParameter($data, 'bank', array('ownerName' => $this->getIbanOwnerName()));
         }
