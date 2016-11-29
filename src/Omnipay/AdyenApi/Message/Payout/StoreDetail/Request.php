@@ -41,6 +41,24 @@ class Request extends AbstractPayoutRequest
     /**
      * @return string
      */
+    public function getBic()
+    {
+        return $this->getParameter('bic');
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function setBic($value)
+    {
+        return $this->setParameter('bic', $value);
+    }
+
+    /**
+     * @return string
+     */
     public function getBankCountryCode()
     {
         return $this->getParameter('bankCountryCode');
@@ -157,6 +175,7 @@ class Request extends AbstractPayoutRequest
     {
         $this->validate('iban');
         $data = $this->appendParameter($data, 'bank', array('iban' => $this->getIban()));
+        $data = $this->appendParameter($data, 'bank', array('bic' => $this->getBic()));
 
         if ($this->getIbanOwnerName() !== null) {
             $data = $this->appendParameter($data, 'bank', array('ownerName' => $this->getIbanOwnerName()));
