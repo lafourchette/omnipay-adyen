@@ -47,6 +47,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             'shopperReference' => 'REF',
             'shopperEmail' => 'shopperEmail',
             'iban' => 'iban',
+            'bic' => 'bic',
         );
 
         $this->request->initialize($data);
@@ -55,6 +56,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             array(
                 'bank' => array(
                     'iban' => $data['iban'],
+                    'bic' => $data['bic'],
                 ),
                 'recurring' => array(
                     'contract' => 'PAYOUT',
@@ -76,6 +78,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             'shopperReference' => 'REF',
             'shopperEmail' => 'shopperEmail',
             'iban' => 'iban',
+            'bic' => 'bic',
             'ibanOwnerName' => 'ibanOwnerName',
             'bankCountryCode' => 'bankCountryCode',
         );
@@ -86,6 +89,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             array(
                 'bank' => array(
                     'iban' => $data['iban'],
+                    'bic' => $data['bic'],
                     'countryCode' => $data['bankCountryCode'],
                     'ownerName' => $data['ibanOwnerName'],
                 ),
@@ -135,6 +139,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             'shopperReference' => 'REF',
             'shopperEmail' => 'shopperEmail',
             'iban' => 'iban',
+            'bic' => 'bic',
         ));
 
         /** @var Response $response */
@@ -220,6 +225,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             'SHOPPER_REFERENCE' => array('shopperReference', 'MyShopperReference'),
             'SHOPPER_EMAIL' => array('shopperEmail', 'MyShopperEmail'),
             'IBAN' => array('iban', 'MyIban'),
+            'BIC' => array('bic', 'MyBic'),
             'BANK_COUNTRY_CODE' => array('bankCountryCode', 'MyCountryCode'),
             'IBAN_OWNER_NAME' => array('ibanOwnerName', 'Toto'),
         );
