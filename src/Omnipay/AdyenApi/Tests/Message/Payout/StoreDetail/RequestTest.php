@@ -47,6 +47,35 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             'shopperReference' => 'REF',
             'shopperEmail' => 'shopperEmail',
             'iban' => 'iban',
+        );
+
+        $this->request->initialize($data);
+
+        $this->assertEquals(
+            array(
+                'bank' => array(
+                    'iban' => $data['iban'],
+                ),
+                'recurring' => array(
+                    'contract' => 'PAYOUT',
+                ),
+                'shopperEmail' => $data['shopperEmail'],
+                'shopperReference' => $data['shopperReference'],
+                'merchantAccount' => $data['merchantAccount'],
+            ),
+            $this->request->getData()
+        );
+    }
+
+    /**
+     */
+    public function testGetDataWithBic()
+    {
+        $data = array(
+            'merchantAccount' => 'MERCHANT',
+            'shopperReference' => 'REF',
+            'shopperEmail' => 'shopperEmail',
+            'iban' => 'iban',
             'bic' => 'bic',
         );
 
