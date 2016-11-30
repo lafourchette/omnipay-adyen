@@ -7,6 +7,9 @@ use Omnipay\AdyenApi\Message\Payout\AbstractPayoutRequest;
  * Adyen Payout store details Request
  * @see https://docs.adyen.com/display/DODL/Store+detail+request
  *
+ * Currently only IBAN submission is handled.
+ * Bic is not mandatory but in case it is provided, it will be sent
+ *
  * Mandatory values :
  *  - shopperEmail
  *  - shopperReference

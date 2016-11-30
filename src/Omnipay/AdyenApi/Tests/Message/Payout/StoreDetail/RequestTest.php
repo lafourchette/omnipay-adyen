@@ -39,97 +39,87 @@ class RequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @dataProvider getTestGetDataData
+     *
+     * @param array $data
+     * @param array $expectedData
      */
-    public function testGetData()
+    public function testGetData($data, $expectedData)
     {
-        $data = array(
-            'merchantAccount' => 'MERCHANT',
-            'shopperReference' => 'REF',
-            'shopperEmail' => 'shopperEmail',
-            'iban' => 'iban',
+        $this->request->initialize($data);
+        $this->assertEquals(
+            $expectedData,
+            $this->request->getData()
         );
+    }
+
+    /**
+     * @dataProvider getTestGetDataData
+     *
+     * @param array $data
+     * @param array $expectedData
+     */
+    public function testGetDataWithBic($data, $expectedData)
+    {
+        $data['bic'] = 'bic';
+
+        $expectedData['bank']['bic'] = $data['bic'];
 
         $this->request->initialize($data);
-
         $this->assertEquals(
-            array(
-                'bank' => array(
-                    'iban' => $data['iban'],
-                ),
-                'recurring' => array(
-                    'contract' => 'PAYOUT',
-                ),
-                'shopperEmail' => $data['shopperEmail'],
-                'shopperReference' => $data['shopperReference'],
-                'merchantAccount' => $data['merchantAccount'],
-            ),
+            $expectedData,
+            $this->request->getData()
+        );
+    }
+
+    /**
+     * @dataProvider getTestGetDataData
+     *
+     * @param array $data
+     * @param array $expectedData
+     */
+    public function testGetDataWithAllData($data, $expectedData)
+    {
+        $data['ibanOwnerName'] = 'ibanOwnerName';
+        $data['bankCountryCode'] = 'bankCountryCode';
+
+        $expectedData['bank']['countryCode'] = $data['bankCountryCode'];
+        $expectedData['bank']['ownerName'] = $data['ibanOwnerName'];
+
+        $this->request->initialize($data);
+        $this->assertEquals(
+            $expectedData,
             $this->request->getData()
         );
     }
 
     /**
      */
-    public function testGetDataWithBic()
+    public function getTestGetDataData()
     {
         $data = array(
             'merchantAccount' => 'MERCHANT',
             'shopperReference' => 'REF',
             'shopperEmail' => 'shopperEmail',
             'iban' => 'iban',
-            'bic' => 'bic',
         );
 
-        $this->request->initialize($data);
-
-        $this->assertEquals(
-            array(
-                'bank' => array(
-                    'iban' => $data['iban'],
-                    'bic' => $data['bic'],
-                ),
-                'recurring' => array(
-                    'contract' => 'PAYOUT',
-                ),
-                'shopperEmail' => $data['shopperEmail'],
-                'shopperReference' => $data['shopperReference'],
-                'merchantAccount' => $data['merchantAccount'],
+        $expectedData = array(
+            'bank' => array(
+                'iban' => $data['iban'],
             ),
-            $this->request->getData()
-        );
-    }
-
-    /**
-     */
-    public function testGetDataWithAllData()
-    {
-        $data = array(
-            'merchantAccount' => 'MERCHANT',
-            'shopperReference' => 'REF',
-            'shopperEmail' => 'shopperEmail',
-            'iban' => 'iban',
-            'bic' => 'bic',
-            'ibanOwnerName' => 'ibanOwnerName',
-            'bankCountryCode' => 'bankCountryCode',
-        );
-
-        $this->request->initialize($data);
-
-        $this->assertEquals(
-            array(
-                'bank' => array(
-                    'iban' => $data['iban'],
-                    'bic' => $data['bic'],
-                    'countryCode' => $data['bankCountryCode'],
-                    'ownerName' => $data['ibanOwnerName'],
-                ),
-                'recurring' => array(
-                    'contract' => 'PAYOUT',
-                ),
-                'shopperEmail' => $data['shopperEmail'],
-                'shopperReference' => $data['shopperReference'],
-                'merchantAccount' => $data['merchantAccount'],
+            'recurring' => array(
+                'contract' => 'PAYOUT',
             ),
-            $this->request->getData()
+            'shopperEmail' => $data['shopperEmail'],
+            'shopperReference' => $data['shopperReference'],
+            'merchantAccount' => $data['merchantAccount'],
+        );
+
+        return array(
+            'testGetData' => array($data, $expectedData),
+            'testGetDataWithBic' => array($data, $expectedData),
+            'testGetDataWithAllData' => array($data, $expectedData),
         );
     }
 
