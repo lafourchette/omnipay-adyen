@@ -54,46 +54,6 @@ class RequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider getTestGetDataData
-     *
-     * @param array $data
-     * @param array $expectedData
-     */
-    public function testGetDataWithBic($data, $expectedData)
-    {
-        $data['bic'] = 'bic';
-
-        $expectedData['bank']['bic'] = $data['bic'];
-
-        $this->request->initialize($data);
-        $this->assertEquals(
-            $expectedData,
-            $this->request->getData()
-        );
-    }
-
-    /**
-     * @dataProvider getTestGetDataData
-     *
-     * @param array $data
-     * @param array $expectedData
-     */
-    public function testGetDataWithAllData($data, $expectedData)
-    {
-        $data['ibanOwnerName'] = 'ibanOwnerName';
-        $data['bankCountryCode'] = 'bankCountryCode';
-
-        $expectedData['bank']['countryCode'] = $data['bankCountryCode'];
-        $expectedData['bank']['ownerName'] = $data['ibanOwnerName'];
-
-        $this->request->initialize($data);
-        $this->assertEquals(
-            $expectedData,
-            $this->request->getData()
-        );
-    }
-
-    /**
      */
     public function getTestGetDataData()
     {
@@ -104,7 +64,20 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             'iban' => 'iban',
         );
 
-        $expectedData = array(
+        $dataWithBic = array_merge_recursive(
+            $data,
+            array('bic' => 'bic')
+        );
+
+        $dataWithFullData = array_merge_recursive(
+            $data,
+            array(
+                'ibanOwnerName' => 'ibanOwnerName',
+                'bankCountryCode' => 'bankCountryCode'
+            )
+        );
+
+        $expectedData = $expectedDataWithFullData = array(
             'bank' => array(
                 'iban' => $data['iban'],
             ),
@@ -116,10 +89,29 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             'merchantAccount' => $data['merchantAccount'],
         );
 
+        $expectedDataWithBic = array_merge_recursive(
+            $expectedData,
+            array(
+                'bank' => array(
+                    'bic' => 'bic'
+                ),
+            )
+        );
+
+        $expectedDataWithFullData = array_merge_recursive(
+            $expectedData,
+            array(
+                'bank' => array(
+                    'ownerName' => 'ibanOwnerName',
+                    'countryCode' => 'bankCountryCode'
+                ),
+            )
+        );
+
         return array(
             'testGetData' => array($data, $expectedData),
-            'testGetDataWithBic' => array($data, $expectedData),
-            'testGetDataWithAllData' => array($data, $expectedData),
+            'testGetDataWithBic' => array($dataWithBic, $expectedDataWithBic),
+            'testGetDataWithFullData' => array($dataWithFullData, $expectedDataWithFullData),
         );
     }
 
