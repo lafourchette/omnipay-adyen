@@ -39,64 +39,79 @@ class RequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @dataProvider getTestGetDataData
+     *
+     * @param array $data
+     * @param array $expectedData
      */
-    public function testGetData()
+    public function testGetData($data, $expectedData)
     {
-        $data = array(
-            'merchantAccount' => 'MERCHANT',
-            'shopperReference' => 'REF',
-            'shopperEmail' => 'shopperEmail',
-            'iban' => 'iban',
-        );
-
         $this->request->initialize($data);
-
         $this->assertEquals(
-            array(
-                'bank' => array(
-                    'iban' => $data['iban'],
-                ),
-                'recurring' => array(
-                    'contract' => 'PAYOUT',
-                ),
-                'shopperEmail' => $data['shopperEmail'],
-                'shopperReference' => $data['shopperReference'],
-                'merchantAccount' => $data['merchantAccount'],
-            ),
+            $expectedData,
             $this->request->getData()
         );
     }
 
     /**
      */
-    public function testGetDataWithAllData()
+    public function getTestGetDataData()
     {
         $data = array(
             'merchantAccount' => 'MERCHANT',
             'shopperReference' => 'REF',
             'shopperEmail' => 'shopperEmail',
             'iban' => 'iban',
-            'ibanOwnerName' => 'ibanOwnerName',
-            'bankCountryCode' => 'bankCountryCode',
         );
 
-        $this->request->initialize($data);
+        $dataWithBic = array_merge_recursive(
+            $data,
+            array('bic' => 'bic')
+        );
 
-        $this->assertEquals(
+        $dataWithFullData = array_merge_recursive(
+            $data,
+            array(
+                'ibanOwnerName' => 'ibanOwnerName',
+                'bankCountryCode' => 'bankCountryCode'
+            )
+        );
+
+        $expectedData = $expectedDataWithFullData = array(
+            'bank' => array(
+                'iban' => $data['iban'],
+            ),
+            'recurring' => array(
+                'contract' => 'PAYOUT',
+            ),
+            'shopperEmail' => $data['shopperEmail'],
+            'shopperReference' => $data['shopperReference'],
+            'merchantAccount' => $data['merchantAccount'],
+        );
+
+        $expectedDataWithBic = array_merge_recursive(
+            $expectedData,
             array(
                 'bank' => array(
-                    'iban' => $data['iban'],
-                    'countryCode' => $data['bankCountryCode'],
-                    'ownerName' => $data['ibanOwnerName'],
+                    'bic' => 'bic'
                 ),
-                'recurring' => array(
-                    'contract' => 'PAYOUT',
+            )
+        );
+
+        $expectedDataWithFullData = array_merge_recursive(
+            $expectedData,
+            array(
+                'bank' => array(
+                    'ownerName' => 'ibanOwnerName',
+                    'countryCode' => 'bankCountryCode'
                 ),
-                'shopperEmail' => $data['shopperEmail'],
-                'shopperReference' => $data['shopperReference'],
-                'merchantAccount' => $data['merchantAccount'],
-            ),
-            $this->request->getData()
+            )
+        );
+
+        return array(
+            'testGetData' => array($data, $expectedData),
+            'testGetDataWithBic' => array($dataWithBic, $expectedDataWithBic),
+            'testGetDataWithFullData' => array($dataWithFullData, $expectedDataWithFullData),
         );
     }
 
@@ -135,6 +150,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             'shopperReference' => 'REF',
             'shopperEmail' => 'shopperEmail',
             'iban' => 'iban',
+            'bic' => 'bic',
         ));
 
         /** @var Response $response */
@@ -220,6 +236,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             'SHOPPER_REFERENCE' => array('shopperReference', 'MyShopperReference'),
             'SHOPPER_EMAIL' => array('shopperEmail', 'MyShopperEmail'),
             'IBAN' => array('iban', 'MyIban'),
+            'BIC' => array('bic', 'MyBic'),
             'BANK_COUNTRY_CODE' => array('bankCountryCode', 'MyCountryCode'),
             'IBAN_OWNER_NAME' => array('ibanOwnerName', 'Toto'),
         );
