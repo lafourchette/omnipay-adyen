@@ -7,7 +7,8 @@ use Omnipay\AdyenApi\Message\Payout\AbstractPayoutRequest;
  * Adyen Payout store details Request
  * @see https://docs.adyen.com/display/DODL/Store+detail+request
  *
- * Currently only IBAN submission is handled
+ * Currently only IBAN submission is handled.
+ * Bic is not mandatory but in case it is provided, it will be sent
  *
  * Mandatory values :
  *  - shopperEmail
@@ -17,6 +18,7 @@ use Omnipay\AdyenApi\Message\Payout\AbstractPayoutRequest;
  * Optionnal values :
  *  - bankCountryCode
  *  - ibanOwnerName
+ *  - bic
  */
 class Request extends AbstractPayoutRequest
 {
@@ -36,6 +38,24 @@ class Request extends AbstractPayoutRequest
     public function setIban($value)
     {
         return $this->setParameter('iban', $value);
+    }
+
+    /**
+     * @return string
+     */
+    public function getBic()
+    {
+        return $this->getParameter('bic');
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function setBic($value)
+    {
+        return $this->setParameter('bic', $value);
     }
 
     /**
@@ -158,6 +178,10 @@ class Request extends AbstractPayoutRequest
         $this->validate('iban');
         $data = $this->appendParameter($data, 'bank', array('iban' => $this->getIban()));
 
+        if ($this->getBic() !== null) {
+            $this->validate('bic');
+            $data = $this->appendParameter($data, 'bank', array('bic' => $this->getBic()));
+        }
         if ($this->getIbanOwnerName() !== null) {
             $data = $this->appendParameter($data, 'bank', array('ownerName' => $this->getIbanOwnerName()));
         }
