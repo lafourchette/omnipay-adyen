@@ -251,6 +251,23 @@ class Request extends AbstractPaymentRequest
     }
 
     /**
+     * @return string
+     */
+    public function getShopperStatement()
+    {
+        return $this->getParameter('shopperStatement');
+    }
+    /**
+     * @param string $value
+     *
+     * @return Request
+     */
+    public function setShopperStatement($value)
+    {
+        return $this->setParameter('shopperStatement', $value);
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function getData()
@@ -389,6 +406,9 @@ class Request extends AbstractPaymentRequest
         }
         if ($this->getShopperInteraction() !== null) {
             $data = $this->appendParameter($data, 'shopperInteraction', $this->getShopperInteraction());
+        }
+        if ($this->getShopperStatement() !== null) {
+            $data = $this->appendParameter($data, 'shopperStatement', $this->getShopperStatement());
         }
 
         return $data;
