@@ -4,8 +4,8 @@ namespace Omnipay\AdyenApi\Message\Payout\Decline;
 use Omnipay\AdyenApi\Message\Payout\Confirm\Request as ConfirmRequest;
 
 /**
- * Adyen Payout confirm Request
- * @see https://docs.adyen.com/display/DODL/Decline+payout+request
+ * Adyen Payout decline Request
+ * @see https://docs.adyen.com/api-explorer/#/Payout/v30/declineThirdParty
  *
  * Mandatory values :
  *  - originalReference
@@ -17,7 +17,7 @@ class Request extends ConfirmRequest
      */
     public function getMethodName()
     {
-        return 'decline';
+        return 'declineThirdParty';
     }
 
     /**

@@ -5,7 +5,7 @@ use Omnipay\AdyenApi\Message\Payment\AbstractPaymentRequest;
 
 /**
  * Adyen Refund Request
- * @see https://www.adyen.com/apidocs/?example=Refund%201
+ * @see https://pal-test.adyen.com/pal/servlet/Payment/v30/refund
  *
  * Mandatory values :
  *  - merchantAccount

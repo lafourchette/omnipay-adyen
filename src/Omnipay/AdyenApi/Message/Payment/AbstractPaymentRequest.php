@@ -10,8 +10,8 @@ use Omnipay\AdyenApi\Message\AbstractApiRequest;
  */
 abstract class AbstractPaymentRequest extends AbstractApiRequest
 {
-    protected $liveEndpoint = 'https://pal-live.adyen.com/pal/servlet/Payment/v12/';
-    protected $testEndpoint = 'https://pal-test.adyen.com/pal/servlet/Payment/v12/';
+    protected $liveEndpoint = 'https://pal-live.adyen.com/pal/servlet/Payment/v30/';
+    protected $testEndpoint = 'https://pal-test.adyen.com/pal/servlet/Payment/v30/';
 
     /**
      * @return string

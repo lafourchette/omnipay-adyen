@@ -5,7 +5,7 @@ use Omnipay\AdyenApi\Message\Payout\AbstractPayoutRequest;
 
 /**
  * Adyen Payout submit Request
- * @see https://docs.adyen.com/display/DODL/Submit+payout+request
+ * @see https://docs.adyen.com/api-explorer/#/Payout/v30/submitThirdParty
  *
  * Mandatory values :
  *  - amountCurrency
@@ -162,7 +162,7 @@ class Request extends AbstractPayoutRequest
      */
     public function getMethodName()
     {
-        return 'submit';
+        return 'submitThirdParty';
     }
 
     /**

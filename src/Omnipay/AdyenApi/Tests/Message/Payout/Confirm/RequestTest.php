@@ -161,7 +161,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
     public function testGetMethodName()
     {
         $this->assertSame(
-            'confirm',
+            'confirmThirdParty',
             $this->request->getMethodName()
         );
     }

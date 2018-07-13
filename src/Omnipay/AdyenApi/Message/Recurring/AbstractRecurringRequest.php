@@ -8,6 +8,6 @@ use Omnipay\AdyenApi\Message\AbstractApiRequest;
  */
 abstract class AbstractRecurringRequest extends AbstractApiRequest
 {
-    protected $liveEndpoint = 'https://pal-live.adyen.com/pal/servlet/Recurring/v12/';
-    protected $testEndpoint = 'https://pal-test.adyen.com/pal/servlet/Recurring/v12/';
+    protected $liveEndpoint = 'https://pal-live.adyen.com/pal/servlet/Recurring/v25/';
+    protected $testEndpoint = 'https://pal-test.adyen.com/pal/servlet/Recurring/v25/';
 }

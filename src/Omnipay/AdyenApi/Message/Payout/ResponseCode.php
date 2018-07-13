@@ -8,8 +8,7 @@ namespace Omnipay\AdyenApi\Message\Payout;
  */
 class ResponseCode
 {
-    //@see https://docs.adyen.com/display/DODL/Confirm+payout+response
+    //@see https://docs.adyen.com/developers/features/third-party-payouts/confirm-or-decline-payout
     const PAYOUT_CONFIRM_RECEIVED = '[payout-confirm-received]';
-    //@see https://docs.adyen.com/display/DODL/Decline+payout+response
     const PAYOUT_DECLINE_RECEIVED = '[payout-decline-received]';
 }

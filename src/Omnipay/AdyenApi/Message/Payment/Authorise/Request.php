@@ -5,7 +5,7 @@ use Omnipay\AdyenApi\Message\Payment\AbstractPaymentRequest;
 
 /**
  * Adyen Authorise Request
- * @see https://www.adyen.com/apidocs/?example=CSE%20Authorisation
+ * @see https://docs.adyen.com/api-explorer/#/Payment/v30/authorise
  *
  * Mandatory values :
  *  - amountCurrency (amountValue can be ignored for BIN card verification)

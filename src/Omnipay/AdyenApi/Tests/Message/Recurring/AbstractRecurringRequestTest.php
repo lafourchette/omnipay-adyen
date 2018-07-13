@@ -41,13 +41,13 @@ class AbstractRecurringRequestTest extends \PHPUnit_Framework_TestCase
     {
         $this->abstractPaymentRequest->setTestMode(false);
         $this->assertSame(
-            'https://pal-live.adyen.com/pal/servlet/Recurring/v12/',
+            'https://pal-live.adyen.com/pal/servlet/Recurring/v25/',
             $this->abstractPaymentRequest->getBaseEndpoint()
         );
 
         $this->abstractPaymentRequest->setTestMode(true);
         $this->assertSame(
-            'https://pal-test.adyen.com/pal/servlet/Recurring/v12/',
+            'https://pal-test.adyen.com/pal/servlet/Recurring/v25/',
             $this->abstractPaymentRequest->getBaseEndpoint()
         );
     }

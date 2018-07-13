@@ -5,7 +5,7 @@ use Omnipay\AdyenApi\Message\Payout\AbstractPayoutRequest;
 
 /**
  * Adyen Payout confirm Request
- * @see https://docs.adyen.com/display/DODL/Confirm+payout+request
+ * @see https://docs.adyen.com/api-explorer/#/Payout/v30/confirmThirdParty
  *
  * Mandatory values :
  *  - originalReference
@@ -46,7 +46,7 @@ class Request extends AbstractPayoutRequest
      */
     public function getMethodName()
     {
-        return 'confirm';
+        return 'confirmThirdParty';
     }
 
     /**
