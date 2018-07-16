@@ -41,13 +41,13 @@ class AbstractPayoutRequestTest extends \PHPUnit_Framework_TestCase
     {
         $this->abstractPayoutRequest->setTestMode(false);
         $this->assertSame(
-            'https://pal-live.adyen.com/pal/servlet/Payout/v12/',
+            'https://pal-live.adyen.com/pal/servlet/Payout/v30/',
             $this->abstractPayoutRequest->getBaseEndpoint()
         );
 
         $this->abstractPayoutRequest->setTestMode(true);
         $this->assertSame(
-            'https://pal-test.adyen.com/pal/servlet/Payout/v12/',
+            'https://pal-test.adyen.com/pal/servlet/Payout/v30/',
             $this->abstractPayoutRequest->getBaseEndpoint()
         );
     }

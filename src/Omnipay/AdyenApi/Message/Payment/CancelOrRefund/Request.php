@@ -5,7 +5,7 @@ use Omnipay\AdyenApi\Message\Payment\Refund\Request as RefundRequest;
 
 /**
  * Adyen CancelOrRefund Request
- * @see https://www.adyen.com/apidocs/?example=Cancel%20Or%20Refund%201
+ * @see https://pal-test.adyen.com/pal/servlet/Payment/v30/cancelOrRefund
  *
  * Mandatory values :
  *  - merchantAccount
