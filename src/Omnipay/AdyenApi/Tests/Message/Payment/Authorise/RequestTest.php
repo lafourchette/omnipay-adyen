@@ -48,6 +48,10 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             'reference' => 'REFERENCE',
             'merchantAccount' => 'MERCHANT',
             'encryptedForm' => 'FORM',
+            'cavv' => '3q2+78r+ur7erb7vyv66vv\/\/\/\/8=',
+            'eci' => '05',
+            'dsTransID' => 'c4e59ceb-a382-4d6a-bc87-385d591fa09d',
+            'selectedBrand' => 'visa',
         );
 
         $this->request->initialize($data);
@@ -62,6 +66,12 @@ class RequestTest extends \PHPUnit_Framework_TestCase
                 'merchantAccount' => $data['merchantAccount'],
                 'additionalData' => array(
                     'card.encrypted.json' => $data['encryptedForm'],
+                ),
+                'selectedBrand' => $data['selectedBrand'],
+                'mpiData' => array(
+                    'cavv' => $data['cavv'],
+                    'eci' => $data['eci'],
+                    'dsTransID' => $data['dsTransID'],
                 ),
             ),
             $this->request->getData()
@@ -80,6 +90,10 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             'encryptedForm' => 'FORM',
             'additionalAmountValue' => 200,
             'additionalAmountCurrency' => 'CURRENCY2',
+            'cavv' => '3q2+78r+ur7erb7vyv66vv\/\/\/\/8=',
+            'eci' => '05',
+            'dsTransID' => 'c4e59ceb-a382-4d6a-bc87-385d591fa09d',
+            'selectedBrand' => 'visa',
         );
 
         $this->request->initialize($data);
@@ -99,6 +113,12 @@ class RequestTest extends \PHPUnit_Framework_TestCase
                     'value' => $data['additionalAmountValue']*100,
                     'currency' => $data['additionalAmountCurrency'],
                 ),
+                'selectedBrand' => $data['selectedBrand'],
+                'mpiData' => array(
+                    'cavv' => $data['cavv'],
+                    'eci' => $data['eci'],
+                    'dsTransID' => $data['dsTransID'],
+                ),
             ),
             $this->request->getData()
         );
@@ -117,6 +137,10 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             'recurringContract' => 'RecurringContract',
             'recurringDetailName' => 'RecurringDetailName',
             'selectedRecurringDetailReference' => 'SelectedRecurringDetailReference',
+            'cavv' => '3q2+78r+ur7erb7vyv66vv\/\/\/\/8=',
+            'eci' => '05',
+            'dsTransID' => 'c4e59ceb-a382-4d6a-bc87-385d591fa09d',
+            'selectedBrand' => 'visa',
         );
 
         $this->request->initialize($data);
@@ -137,6 +161,12 @@ class RequestTest extends \PHPUnit_Framework_TestCase
                     'recurringDetailName' => $data['recurringDetailName'],
                 ),
                 'selectedRecurringDetailReference' => $data['selectedRecurringDetailReference'],
+                'selectedBrand' => $data['selectedBrand'],
+                'mpiData' => array(
+                    'cavv' => $data['cavv'],
+                    'eci' => $data['eci'],
+                    'dsTransID' => $data['dsTransID'],
+                ),
             ),
             $this->request->getData()
         );
@@ -156,6 +186,10 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             'shopperEmail' => 'ShopperEmail',
             'shopperInteraction' => 'ShopperInteraction',
             'shopperStatement' => 'A shopper statement',
+            'cavv' => '3q2+78r+ur7erb7vyv66vv\/\/\/\/8=',
+            'eci' => '05',
+            'dsTransID' => 'c4e59ceb-a382-4d6a-bc87-385d591fa09d',
+            'selectedBrand' => 'visa',
         );
 
         $this->request->initialize($data);
@@ -175,6 +209,12 @@ class RequestTest extends \PHPUnit_Framework_TestCase
                 'shopperEmail' => $data['shopperEmail'],
                 'shopperInteraction' => $data['shopperInteraction'],
                 'shopperStatement' => $data['shopperStatement'],
+                'selectedBrand' => $data['selectedBrand'],
+                'mpiData' => array(
+                    'cavv' => $data['cavv'],
+                    'eci' => $data['eci'],
+                    'dsTransID' => $data['dsTransID'],
+                ),
             ),
             $this->request->getData()
         );
@@ -199,6 +239,10 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             'shopperEmail' => 'ShopperEmail',
             'shopperInteraction' => 'ShopperInteraction',
             'shopperStatement' => 'A shopper statement',
+            'cavv' => '3q2+78r+ur7erb7vyv66vv\/\/\/\/8=',
+            'eci' => '05',
+            'dsTransID' => 'c4e59ceb-a382-4d6a-bc87-385d591fa09d',
+            'selectedBrand' => 'visa',
         );
 
         $this->request->initialize($data);
@@ -227,6 +271,12 @@ class RequestTest extends \PHPUnit_Framework_TestCase
                 'shopperEmail' => $data['shopperEmail'],
                 'shopperInteraction' => $data['shopperInteraction'],
                 'shopperStatement' => $data['shopperStatement'],
+                'selectedBrand' => $data['selectedBrand'],
+                'mpiData' => array(
+                    'cavv' => $data['cavv'],
+                    'eci' => $data['eci'],
+                    'dsTransID' => $data['dsTransID'],
+                ),
             ),
             $this->request->getData()
         );
@@ -266,6 +316,12 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             'amountCurrency' => 'CURRENCY',
             'reference' => 'REFERENCE',
             'merchantAccount' => 'MERCHANT',
+            'mpiData' => array(
+                'cavv' => '3q2+78r+ur7erb7vyv66vv\/\/\/\/8=',
+                'eci' => '05',
+                'dsTransID' => 'c4e59ceb-a382-4d6a-bc87-385d591fa09d',
+            ),
+            'selectedBrand' => 'visa',
             'encryptedForm' => 'FORM',
         ));
 
