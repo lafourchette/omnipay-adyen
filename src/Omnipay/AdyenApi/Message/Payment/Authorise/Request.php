@@ -11,6 +11,9 @@ use Omnipay\AdyenApi\Message\Payment\AbstractPaymentRequest;
  *  - amountCurrency (amountValue can be ignored for BIN card verification)
  *  - reference
  *  - encryptedForm OR card Data (not already handle) must be provided (depends of CSE use or not)
+ *  - cavv
+ *  - eci
+ *  - dsTransID
  *
  * Optional values :
  *  - additionalAmountValue : for BIN card verification
@@ -235,6 +238,60 @@ class Request extends AbstractPaymentRequest
     /**
      * @return string
      */
+    public function getCavv()
+    {
+        return $this->getParameter('cavv');
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return Request
+     */
+    public function setCavv($value)
+    {
+        return $this->setParameter('cavv', $value);
+    }
+
+    /**
+     * @return string
+     */
+    public function getEci()
+    {
+        return $this->getParameter('eci');
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return Request
+     */
+    public function setEci($value)
+    {
+        return $this->setParameter('eci', $value);
+    }
+
+    /**
+     * @return string
+     */
+    public function getDsTransID()
+    {
+        return $this->getParameter('dsTransID');
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return Request
+     */
+    public function setDsTransID($value)
+    {
+        return $this->setParameter('dsTransID', $value);
+    }
+
+    /**
+     * @return string
+     */
     public function getEncryptedForm()
     {
         return $this->getParameter('encryptedForm');
@@ -278,6 +335,7 @@ class Request extends AbstractPaymentRequest
         if ($this->getAmountValue() != 0 && $this->getAmountValue() !== null) {
             $this->validate('amountValue');
         }
+
         $data = array(
             'amount' => array(
                 /* Amount must be in minor units => no cents */
@@ -292,6 +350,7 @@ class Request extends AbstractPaymentRequest
         $data = $this->appendAdditionalAmountData($data);
         $data = $this->appendRecurringData($data);
         $data = $this->appendShopperData($data);
+        $data = $this->append3dsData($data);
 
         return $data;
     }
@@ -409,6 +468,24 @@ class Request extends AbstractPaymentRequest
         }
         if ($this->getShopperStatement() !== null) {
             $data = $this->appendParameter($data, 'shopperStatement', $this->getShopperStatement());
+        }
+
+        return $data;
+    }
+
+    /**
+     * @param array $data
+     *
+     * @return array
+     */
+    protected function append3dsData(array $data)
+    {
+        if ($this->getCavv() !== null && $this->getEci() !== null && $this->getDsTransID() !== null) {
+            $data = $this->appendParameter($data, 'mpiData', array(
+               'cavv' => $this->getCavv(),
+               'eci' => $this->getEci(),
+               'dsTransID' => $this->getDsTransID(),
+            ));
         }
 
         return $data;
