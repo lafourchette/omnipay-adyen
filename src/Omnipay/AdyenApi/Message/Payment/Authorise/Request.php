@@ -292,6 +292,24 @@ class Request extends AbstractPaymentRequest
     /**
      * @return string
      */
+    public function getSelectedBrand()
+    {
+        return $this->getParameter('selectedBrand');
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return Request
+     */
+    public function setSelectedBrand($value)
+    {
+        return $this->setParameter('selectedBrand', $value);
+    }
+
+    /**
+     * @return string
+     */
     public function getEncryptedForm()
     {
         return $this->getParameter('encryptedForm');
@@ -480,7 +498,8 @@ class Request extends AbstractPaymentRequest
      */
     protected function append3dsData(array $data)
     {
-        if ($this->getCavv() !== null && $this->getEci() !== null && $this->getDsTransID() !== null) {
+        if ($this->getSelectedBrand() !== null && $this->getCavv() !== null && $this->getEci() !== null && $this->getDsTransID() !== null) {
+            $data = $this->appendParameter($data, 'selectedBrand', $this->getSelectedBrand());
             $data = $this->appendParameter($data, 'mpiData', array(
                'cavv' => $this->getCavv(),
                'eci' => $this->getEci(),

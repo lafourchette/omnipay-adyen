@@ -51,6 +51,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             'cavv' => '3q2+78r+ur7erb7vyv66vv\/\/\/\/8=',
             'eci' => '05',
             'dsTransID' => 'c4e59ceb-a382-4d6a-bc87-385d591fa09d',
+            'selectedBrand' => 'visa',
         );
 
         $this->request->initialize($data);
@@ -66,6 +67,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
                 'additionalData' => array(
                     'card.encrypted.json' => $data['encryptedForm'],
                 ),
+                'selectedBrand' => $data['selectedBrand'],
                 'mpiData' => array(
                     'cavv' => $data['cavv'],
                     'eci' => $data['eci'],
@@ -91,6 +93,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             'cavv' => '3q2+78r+ur7erb7vyv66vv\/\/\/\/8=',
             'eci' => '05',
             'dsTransID' => 'c4e59ceb-a382-4d6a-bc87-385d591fa09d',
+            'selectedBrand' => 'visa',
         );
 
         $this->request->initialize($data);
@@ -110,6 +113,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
                     'value' => $data['additionalAmountValue']*100,
                     'currency' => $data['additionalAmountCurrency'],
                 ),
+                'selectedBrand' => $data['selectedBrand'],
                 'mpiData' => array(
                     'cavv' => $data['cavv'],
                     'eci' => $data['eci'],
@@ -136,6 +140,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             'cavv' => '3q2+78r+ur7erb7vyv66vv\/\/\/\/8=',
             'eci' => '05',
             'dsTransID' => 'c4e59ceb-a382-4d6a-bc87-385d591fa09d',
+            'selectedBrand' => 'visa',
         );
 
         $this->request->initialize($data);
@@ -156,6 +161,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
                     'recurringDetailName' => $data['recurringDetailName'],
                 ),
                 'selectedRecurringDetailReference' => $data['selectedRecurringDetailReference'],
+                'selectedBrand' => $data['selectedBrand'],
                 'mpiData' => array(
                     'cavv' => $data['cavv'],
                     'eci' => $data['eci'],
@@ -183,6 +189,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             'cavv' => '3q2+78r+ur7erb7vyv66vv\/\/\/\/8=',
             'eci' => '05',
             'dsTransID' => 'c4e59ceb-a382-4d6a-bc87-385d591fa09d',
+            'selectedBrand' => 'visa',
         );
 
         $this->request->initialize($data);
@@ -202,6 +209,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
                 'shopperEmail' => $data['shopperEmail'],
                 'shopperInteraction' => $data['shopperInteraction'],
                 'shopperStatement' => $data['shopperStatement'],
+                'selectedBrand' => $data['selectedBrand'],
                 'mpiData' => array(
                     'cavv' => $data['cavv'],
                     'eci' => $data['eci'],
@@ -234,6 +242,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             'cavv' => '3q2+78r+ur7erb7vyv66vv\/\/\/\/8=',
             'eci' => '05',
             'dsTransID' => 'c4e59ceb-a382-4d6a-bc87-385d591fa09d',
+            'selectedBrand' => 'visa',
         );
 
         $this->request->initialize($data);
@@ -262,6 +271,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
                 'shopperEmail' => $data['shopperEmail'],
                 'shopperInteraction' => $data['shopperInteraction'],
                 'shopperStatement' => $data['shopperStatement'],
+                'selectedBrand' => $data['selectedBrand'],
                 'mpiData' => array(
                     'cavv' => $data['cavv'],
                     'eci' => $data['eci'],
@@ -311,6 +321,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
                 'eci' => '05',
                 'dsTransID' => 'c4e59ceb-a382-4d6a-bc87-385d591fa09d',
             ),
+            'selectedBrand' => 'visa',
             'encryptedForm' => 'FORM',
         ));
 
